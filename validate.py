@@ -7,7 +7,7 @@ from helpers import getDevicesBluetooth, getDevicesModbusTcp
 print("Loading device schema")
 
 schema = requests.get(
-    "https://patrick762.github.io/bluetti-registers/device.json"
+    "https://bluetti-community.github.io/bluetti-registers/device.json"
 ).json()
 
 print("Getting device files")

@@ -3,6 +3,6 @@
     "type": "array",
     "title": "Devices list schema",
     "items": {
-        "$ref": "https://patrick762.github.io/bluetti-registers/device.json"
+        "$ref": "https://bluetti-community.github.io/bluetti-registers/device.json"
     }
 }
