@@ -46,6 +46,10 @@
         {
             "type": "string",
             "const": "uint32"
+        },
+        {
+            "type": "string",
+            "const": "float32"
         }
     ]
 }

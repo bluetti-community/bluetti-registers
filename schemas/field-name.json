@@ -50,6 +50,111 @@
         },
         {
             "type": "string",
+            "const": "ac_a_c",
+            "title": "AC phase A current"
+        },
+        {
+            "type": "string",
+            "const": "ac_a_p",
+            "title": "AC phase A active power"
+        },
+        {
+            "type": "string",
+            "const": "ac_a_p_apparent",
+            "title": "AC phase A apparent power"
+        },
+        {
+            "type": "string",
+            "const": "ac_a_p_reactive",
+            "title": "AC phase A reactive power"
+        },
+        {
+            "type": "string",
+            "const": "ac_a_pf",
+            "title": "AC phase A power factor"
+        },
+        {
+            "type": "string",
+            "const": "ac_a_v",
+            "title": "AC phase A voltage"
+        },
+        {
+            "type": "string",
+            "const": "ac_b_c",
+            "title": "AC phase B current"
+        },
+        {
+            "type": "string",
+            "const": "ac_b_p",
+            "title": "AC phase B active power"
+        },
+        {
+            "type": "string",
+            "const": "ac_b_p_apparent",
+            "title": "AC phase B apparent power"
+        },
+        {
+            "type": "string",
+            "const": "ac_b_p_reactive",
+            "title": "AC phase B reactive power"
+        },
+        {
+            "type": "string",
+            "const": "ac_b_pf",
+            "title": "AC phase B power factor"
+        },
+        {
+            "type": "string",
+            "const": "ac_b_v",
+            "title": "AC phase B voltage"
+        },
+        {
+            "type": "string",
+            "const": "ac_c_avg",
+            "title": "AC average line current"
+        },
+        {
+            "type": "string",
+            "const": "ac_c_c",
+            "title": "AC phase C current"
+        },
+        {
+            "type": "string",
+            "const": "ac_c_p",
+            "title": "AC phase C active power"
+        },
+        {
+            "type": "string",
+            "const": "ac_c_p_apparent",
+            "title": "AC phase C apparent power"
+        },
+        {
+            "type": "string",
+            "const": "ac_c_p_reactive",
+            "title": "AC phase C reactive power"
+        },
+        {
+            "type": "string",
+            "const": "ac_c_pf",
+            "title": "AC phase C power factor"
+        },
+        {
+            "type": "string",
+            "const": "ac_c_total",
+            "title": "AC total line current"
+        },
+        {
+            "type": "string",
+            "const": "ac_c_unbalance",
+            "title": "AC line current unbalance"
+        },
+        {
+            "type": "string",
+            "const": "ac_c_v",
+            "title": "AC phase C voltage"
+        },
+        {
+            "type": "string",
             "const": "ac_eco_mode",
             "title": "AC Eco mode"
         },
@@ -105,6 +210,26 @@
         },
         {
             "type": "string",
+            "const": "ac_p_apparent_total",
+            "title": "AC total apparent power"
+        },
+        {
+            "type": "string",
+            "const": "ac_p_reactive_total",
+            "title": "AC total reactive power"
+        },
+        {
+            "type": "string",
+            "const": "ac_p_total",
+            "title": "AC total active power"
+        },
+        {
+            "type": "string",
+            "const": "ac_pf_total",
+            "title": "AC total power factor"
+        },
+        {
+            "type": "string",
             "const": "ac_power_lifting_switch",
             "title": "AC power lifting switch"
         },
@@ -112,6 +237,11 @@
             "type": "string",
             "const": "ac_ups_mode",
             "title": "AC UPS mode"
+        },
+        {
+            "type": "string",
+            "const": "ac_v_avg",
+            "title": "AC average phase voltage"
         },
         {
             "type": "string",
@@ -195,13 +325,13 @@
         },
         {
             "type": "string",
-            "const": "b_ver_bms",
-            "title": "Battery BMS version"
+            "const": "b_v_total",
+            "title": "Total battery voltage"
         },
         {
             "type": "string",
-            "const": "b_v_total",
-            "title": "Total battery voltage"
+            "const": "b_ver_bms",
+            "title": "Battery BMS version"
         },
         {
             "type": "string",
@@ -280,8 +410,18 @@
         },
         {
             "type": "string",
+            "const": "d_status",
+            "title": "Device status"
+        },
+        {
+            "type": "string",
             "const": "d_time_remaining",
             "title": "Time Remaining"
+        },
+        {
+            "type": "string",
+            "const": "d_timestamp",
+            "title": "Device timestamp (Unix time)"
         },
         {
             "type": "string",
