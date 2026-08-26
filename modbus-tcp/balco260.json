@@ -370,12 +370,6 @@
             "device_class": "energy"
         },
         {
-            "name": "ac_o_switch",
-            "address": 57001,
-            "content": "bool",
-            "writeable": true
-        },
-        {
             "name": "g_i_switch",
             "address": 57009,
             "content": "bool",
