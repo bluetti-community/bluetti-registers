@@ -305,15 +305,6 @@
             "scale": 0.1
         },
         {
-            "name": "b_c",
-            "address": 51220,
-            "content": "uint",
-            "unit": "A",
-            "scale": 0.1,
-            "state_class": "measurement",
-            "device_class": "current"
-        },
-        {
             "name": "b_soc",
             "address": 51221,
             "content": "uint",
