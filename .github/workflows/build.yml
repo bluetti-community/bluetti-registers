@@ -10,6 +10,13 @@ on:
         - '.github/workflows/**'
         tags:
             - "*"
+    pull_request:
+        branches: [ "main" ]
+        paths:
+        - 'bluetooth/**'
+        - 'modbus-tcp/**'
+        - '*.py'
+        - '.github/workflows/**'
 
 jobs:
     validate:
