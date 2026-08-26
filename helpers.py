@@ -1,7 +1,39 @@
+import json
 from os import listdir
 from os.path import isfile, join
 
+from referencing import Registry, Resource
+
 from fields import create_special_fields
+
+SCHEMA_BASE_URL = "https://bluetti-community.github.io/bluetti-registers/"
+
+
+def load_schema(name: str):
+    """Load a schema from the local schemas/ directory.
+
+    Resolves $refs against the other local schema files rather than
+    fetching them from the published GitHub Pages site - otherwise
+    validation would run against whatever schema is currently live
+    instead of the one actually being changed in a given PR.
+    """
+    schemas_dir = "schemas"
+    resources = []
+    for filename in listdir(schemas_dir):
+        if not filename.endswith(".json"):
+            continue
+        with open(join(schemas_dir, filename)) as f:
+            resources.append(
+                (SCHEMA_BASE_URL + filename, Resource.from_contents(json.load(f)))
+            )
+
+    registry = Registry().with_resources(resources)
+
+    with open(join(schemas_dir, name)) as f:
+        schema = json.load(f)
+
+    return schema, registry
+
 
 field_sorting = [
     "name",

@@ -1,11 +1,11 @@
 import os
-import requests
 import json
 from jsonschema import validate
 
 from helpers import (
     getDevicesModbusTcp,
     getDevicesBluetooth,
+    load_schema,
 )
 
 if not os.path.exists("out"):
@@ -13,9 +13,7 @@ if not os.path.exists("out"):
 
 print("Loading devices list schema")
 
-schema = requests.get(
-    "https://bluetti-community.github.io/bluetti-registers/all-devices.json"
-).json()
+schema, registry = load_schema("all-devices.json")
 
 print("Getting device files")
 
@@ -36,7 +34,7 @@ for f in getDevicesBluetooth():
 
 print("Validating output")
 
-validate(result, schema=schema)
+validate(result, schema=schema, registry=registry)
 
 print("Writing result to file")
 
@@ -61,7 +59,7 @@ for f in device_files:
 
 print("Validating output")
 
-validate(result, schema=schema)
+validate(result, schema=schema, registry=registry)
 
 print("Writing result to file")
 
