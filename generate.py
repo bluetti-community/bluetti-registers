@@ -14,7 +14,7 @@ if not os.path.exists("out"):
 print("Loading devices list schema")
 
 schema = requests.get(
-    "https://patrick762.github.io/bluetti-registers/all-devices.json"
+    "https://bluetti-community.github.io/bluetti-registers/all-devices.json"
 ).json()
 
 print("Getting device files")
