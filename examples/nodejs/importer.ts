@@ -1,11 +1,11 @@
 import fs from "fs";
 import { compile, JSONSchema } from "json-schema-to-typescript";
 
-const tag = "0.0.10";
+const tag = "0.0.20";
 
-const url = `https://github.com/Patrick762/bluetti-registers/releases/download/${tag}/bluetooth.json`
-const schema = `https://raw.githubusercontent.com/Patrick762/bluetti-registers/refs/tags/${tag}/schemas/all-devices.json`;
-const enums = `https://raw.githubusercontent.com/Patrick762/bluetti-registers/refs/tags/${tag}/schemas/enums.json`;
+const url = `https://github.com/bluetti-community/bluetti-registers/releases/download/${tag}/bluetooth.json`
+const schema = `https://raw.githubusercontent.com/bluetti-community/bluetti-registers/refs/tags/${tag}/schemas/all-devices.json`;
+const enums = `https://raw.githubusercontent.com/bluetti-community/bluetti-registers/refs/tags/${tag}/schemas/enums.json`;
 
 const output = "devices.ts";
 
