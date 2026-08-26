@@ -1,0 +1,234 @@
+{
+    "$schema": "https://bluetti-community.github.io/bluetti-registers/device.json",
+    "name": "SMeter",
+    "contributors": [],
+    "fields": [
+        {
+            "name": "d_status",
+            "address": 55111,
+            "content": "uint16",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_timestamp",
+            "address": 55112,
+            "content": "uint32",
+            "category": "diagnostic"
+        },
+        {
+            "name": "ac_a_v",
+            "address": 55114,
+            "content": "float32",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage"
+        },
+        {
+            "name": "ac_b_v",
+            "address": 55116,
+            "content": "float32",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage"
+        },
+        {
+            "name": "ac_c_v",
+            "address": 55118,
+            "content": "float32",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage"
+        },
+        {
+            "name": "ac_a_c",
+            "address": 55120,
+            "content": "float32",
+            "unit": "A",
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "ac_b_c",
+            "address": 55122,
+            "content": "float32",
+            "unit": "A",
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "ac_c_c",
+            "address": 55124,
+            "content": "float32",
+            "unit": "A",
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "ac_a_p",
+            "address": 55126,
+            "content": "float32",
+            "unit": "kW",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "ac_b_p",
+            "address": 55128,
+            "content": "float32",
+            "unit": "kW",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "ac_c_p",
+            "address": 55130,
+            "content": "float32",
+            "unit": "kW",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "ac_a_p_reactive",
+            "address": 55132,
+            "content": "float32",
+            "unit": "kVAR",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_b_p_reactive",
+            "address": 55134,
+            "content": "float32",
+            "unit": "kVAR",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_c_p_reactive",
+            "address": 55136,
+            "content": "float32",
+            "unit": "kVAR",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_a_p_apparent",
+            "address": 55138,
+            "content": "float32",
+            "unit": "kVA",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_b_p_apparent",
+            "address": 55140,
+            "content": "float32",
+            "unit": "kVA",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_c_p_apparent",
+            "address": 55142,
+            "content": "float32",
+            "unit": "kVA",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_a_pf",
+            "address": 55144,
+            "content": "float32",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_b_pf",
+            "address": 55146,
+            "content": "float32",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_c_pf",
+            "address": 55148,
+            "content": "float32",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_v_avg",
+            "address": 55150,
+            "content": "float32",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage"
+        },
+        {
+            "name": "ac_c_avg",
+            "address": 55152,
+            "content": "float32",
+            "unit": "A",
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "ac_c_unbalance",
+            "address": 55154,
+            "content": "float32",
+            "unit": "%",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_c_total",
+            "address": 55156,
+            "content": "float32",
+            "unit": "A",
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "ac_p_total",
+            "address": 55158,
+            "content": "float32",
+            "unit": "kW",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "ac_p_reactive_total",
+            "address": 55160,
+            "content": "float32",
+            "unit": "kVAR",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_p_apparent_total",
+            "address": 55162,
+            "content": "float32",
+            "unit": "kVA",
+            "state_class": "measurement"
+        },
+        {
+            "name": "ac_pf_total",
+            "address": 55164,
+            "content": "float32",
+            "state_class": "measurement"
+        },
+        {
+            "name": "g_i_f",
+            "address": 55166,
+            "content": "float32",
+            "unit": "Hz",
+            "state_class": "measurement",
+            "device_class": "frequency"
+        },
+        {
+            "name": "g_i_e_total",
+            "address": 55168,
+            "content": "float32",
+            "unit": "kWh",
+            "state_class": "total_increasing",
+            "device_class": "energy"
+        },
+        {
+            "name": "g_o_e_total",
+            "address": 55170,
+            "content": "float32",
+            "unit": "kWh",
+            "state_class": "total_increasing",
+            "device_class": "energy"
+        }
+    ]
+}
