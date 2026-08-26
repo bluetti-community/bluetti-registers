@@ -1,14 +1,11 @@
-import requests
 import json
 from jsonschema import validate
 
-from helpers import getDevicesBluetooth, getDevicesModbusTcp
+from helpers import getDevicesBluetooth, getDevicesModbusTcp, load_schema
 
 print("Loading device schema")
 
-schema = requests.get(
-    "https://bluetti-community.github.io/bluetti-registers/device.json"
-).json()
+schema, registry = load_schema("device.json")
 
 print("Getting device files")
 
@@ -22,7 +19,7 @@ for f in device_files:
 
     print("Validating")
 
-    validate(data, schema=schema)
+    validate(data, schema=schema, registry=registry)
 
     if len(data["contributors"]) == 0:
         raise Exception(f'Contributors for device {data["name"]} missing')
@@ -39,7 +36,7 @@ for f in device_files:
 
     print("Validating")
 
-    validate(data, schema=schema)
+    validate(data, schema=schema, registry=registry)
 
     print("Device validation complete")
 
