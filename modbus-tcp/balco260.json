@@ -132,6 +132,24 @@
             "category": "diagnostic"
         },
         {
+            "name": "d_serial",
+            "address": 50206,
+            "content": "serial",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_ver_arm",
+            "address": 50210,
+            "content": "version",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_ver_dsp",
+            "address": 50212,
+            "content": "version",
+            "category": "diagnostic"
+        },
+        {
             "name": "g_i_f",
             "address": 50214,
             "content": "uint",
