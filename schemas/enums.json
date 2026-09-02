@@ -56,6 +56,25 @@
             ]
         },
         {
+            "title": "Pack Charging Status",
+            "type": "integer",
+            "enum": [
+                "idle",
+                "charging",
+                "discharging"
+            ]
+        },
+        {
+            "title": "PV Type",
+            "type": "integer",
+            "enum": [
+                "reserve",
+                "car",
+                "adapter",
+                "other"
+            ]
+        },
+        {
             "title": "Output Mode",
             "type": "integer",
             "enum": [

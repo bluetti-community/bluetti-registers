@@ -1,8 +1,8 @@
 {
     "$schema": "https://bluetti-community.github.io/bluetti-registers/device.json",
-    "name": "Balco260",
+    "name": "EP2000",
     "contributors": [
-        "@Patrick762"
+        "@bluetti-official"
     ],
     "fields": [
         {
@@ -123,6 +123,106 @@
             "category": "diagnostic",
             "options": "inverter_fault",
             "length": 5
+        },
+        {
+            "name": "d_manufacturer",
+            "address": 50032,
+            "content": "string",
+            "length": 16,
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_reactive_p_total",
+            "address": 50048,
+            "content": "int",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "d_apparent_p_total",
+            "address": 50050,
+            "content": "int",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "b_p",
+            "address": 50052,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_rated_p_max",
+            "address": 50054,
+            "content": "int",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "d_rated_p_max_continuous",
+            "address": 50056,
+            "content": "int",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "d_rated_va_max_continuous",
+            "address": 50058,
+            "content": "int",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "d_rated_var_max_continuous",
+            "address": 50060,
+            "content": "int",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "d_rated_var_max_continuous_neg",
+            "address": 50062,
+            "content": "int",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "d_rated_pf_min_over_excited",
+            "address": 50064,
+            "content": "int",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "d_rated_pf_min_under_excited",
+            "address": 50066,
+            "content": "int",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "d_online_component",
+            "address": 50068,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_rated_v",
+            "address": 50069,
+            "content": "uint",
+            "category": "diagnostic",
+            "unit": "V"
+        },
+        {
+            "name": "d_rated_f",
+            "address": 50070,
+            "content": "uint",
+            "scale": 0.01,
+            "category": "diagnostic",
+            "unit": "Hz"
         },
         {
             "name": "d_inverter_type",
@@ -670,6 +770,182 @@
             "device_class": "current"
         },
         {
+            "name": "g_1_p_active",
+            "address": 50288,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "g_2_p_active",
+            "address": 50290,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "g_3_p_active",
+            "address": 50292,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "g_1_p_reactive",
+            "address": 50294,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "g_2_p_reactive",
+            "address": 50296,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "g_3_p_reactive",
+            "address": 50298,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "g_1_p_apparent",
+            "address": 50300,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "g_2_p_apparent",
+            "address": 50302,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "g_3_p_apparent",
+            "address": 50304,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_inverter_1_p_active_internal",
+            "address": 50306,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_inverter_2_p_active_internal",
+            "address": 50308,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_inverter_3_p_active_internal",
+            "address": 50310,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_hw_ver",
+            "address": 50400,
+            "content": "string",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "d_p_active",
+            "address": 50402,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "d_p_reactive",
+            "address": 50403,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "d_f",
+            "address": 50404,
+            "content": "uint",
+            "unit": "Hz",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "frequency"
+        },
+        {
+            "name": "d_operational_mode_status",
+            "address": 50405,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_connection_status",
+            "address": 50406,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_alarm_status",
+            "address": 50407,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_inverter_der_status",
+            "address": 50408,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_local_control_mode_status",
+            "address": 50409,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_storage_mode_status",
+            "address": 50410,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
             "name": "d_num_battery_packs",
             "address": 51001,
             "content": "uint",
@@ -954,6 +1230,182 @@
             "unit": "%",
             "num_min": 0,
             "num_max": 100,
+            "writeable": true,
+            "category": "config"
+        },
+        {
+            "name": "d_ems_ctrl",
+            "address": 57030,
+            "content": "uint",
+            "writeable": true,
+            "category": "config"
+        },
+        {
+            "name": "d_p_active_target_l1",
+            "address": 57032,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_p_active_target_l2",
+            "address": 57034,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_p_active_target_l3",
+            "address": 57036,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_p_reactive_target_l1",
+            "address": 57038,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_p_reactive_target_l2",
+            "address": 57040,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_p_reactive_target_l3",
+            "address": 57042,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_p_apparent_target_l1",
+            "address": 57044,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_p_apparent_target_l2",
+            "address": 57046,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_p_apparent_target_l3",
+            "address": 57048,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_p_output_level_pct",
+            "address": 57050,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "d_p_limit_timeout",
+            "address": 57051,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "d_p_limit_ramp_time",
+            "address": 57052,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "d_p_limit_ramp_rate_pct",
+            "address": 57053,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "d_battery_control",
+            "address": 57503,
+            "content": "uint",
+            "writeable": true,
+            "category": "config"
+        },
+        {
+            "name": "d_export_limit",
+            "address": 57504,
+            "content": "uint",
+            "unit": "W",
+            "writeable": true,
+            "category": "config",
+            "length": 2
+        },
+        {
+            "name": "d_storage_set_point",
+            "address": 57506,
+            "content": "uint",
+            "unit": "W",
+            "writeable": true,
+            "category": "config",
+            "length": 2
+        },
+        {
+            "name": "d_op_mod_connect",
+            "address": 57508,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_op_mod_gen_lim_w",
+            "address": 57509,
+            "content": "uint",
+            "unit": "W",
+            "writeable": true,
+            "category": "config",
+            "length": 2
+        },
+        {
+            "name": "d_op_mod_load_lim_w",
+            "address": 57511,
+            "content": "uint",
+            "unit": "W",
+            "writeable": true,
+            "category": "config",
+            "length": 2
+        },
+        {
+            "name": "d_ramp_rate",
+            "address": 57513,
+            "content": "uint",
             "writeable": true,
             "category": "config"
         }

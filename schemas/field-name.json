@@ -185,6 +185,11 @@
         },
         {
             "type": "string",
+            "const": "ac_o_e_1",
+            "title": "AC energy output (this inverter)"
+        },
+        {
+            "type": "string",
             "const": "ac_o_e_total",
             "title": "Total AC energy output"
         },
@@ -197,6 +202,11 @@
             "type": "string",
             "const": "ac_o_mode",
             "title": "AC output mode"
+        },
+        {
+            "type": "string",
+            "const": "ac_o_p_1",
+            "title": "AC power output (this inverter)"
         },
         {
             "type": "string",
@@ -230,6 +240,11 @@
         },
         {
             "type": "string",
+            "const": "ac_phase_count",
+            "title": "AC load output phase count"
+        },
+        {
+            "type": "string",
             "const": "ac_power_lifting_switch",
             "title": "AC power lifting switch"
         },
@@ -242,6 +257,16 @@
             "type": "string",
             "const": "ac_v_avg",
             "title": "AC average phase voltage"
+        },
+        {
+            "type": "string",
+            "const": "b_alarm_portable",
+            "title": "Battery pack alarm (portable ESS)"
+        },
+        {
+            "type": "string",
+            "const": "b_alarm_residential",
+            "title": "Battery pack alarm (residential ESS)"
         },
         {
             "type": "string",
@@ -265,6 +290,11 @@
         },
         {
             "type": "string",
+            "const": "b_error",
+            "title": "Battery pack system error flags"
+        },
+        {
+            "type": "string",
             "const": "b_i_e",
             "title": "Battery energy input"
         },
@@ -277,6 +307,21 @@
             "type": "string",
             "const": "b_o_e",
             "title": "Battery energy output"
+        },
+        {
+            "type": "string",
+            "const": "b_p",
+            "title": "Battery power"
+        },
+        {
+            "type": "string",
+            "const": "b_protect",
+            "title": "Battery pack protect flags"
+        },
+        {
+            "type": "string",
+            "const": "b_serial",
+            "title": "Battery pack serial number"
         },
         {
             "type": "string",
@@ -310,8 +355,33 @@
         },
         {
             "type": "string",
+            "const": "b_status",
+            "title": "Battery charging status"
+        },
+        {
+            "type": "string",
             "const": "b_t_avg",
             "title": "Battery average temperature"
+        },
+        {
+            "type": "string",
+            "const": "b_time_to_empty",
+            "title": "Battery pack estimated time to empty"
+        },
+        {
+            "type": "string",
+            "const": "b_time_to_empty_total",
+            "title": "Total estimated time to empty"
+        },
+        {
+            "type": "string",
+            "const": "b_time_to_full",
+            "title": "Battery pack estimated time to full charge"
+        },
+        {
+            "type": "string",
+            "const": "b_time_to_full_total",
+            "title": "Total estimated time to full charge"
         },
         {
             "type": "string",
@@ -330,8 +400,43 @@
         },
         {
             "type": "string",
+            "const": "b_ver_1",
+            "title": "Battery pack 1 software version"
+        },
+        {
+            "type": "string",
+            "const": "b_ver_2",
+            "title": "Battery pack 2 software version"
+        },
+        {
+            "type": "string",
+            "const": "b_ver_3",
+            "title": "Battery pack 3 software version"
+        },
+        {
+            "type": "string",
+            "const": "b_ver_4",
+            "title": "Battery pack 4 software version"
+        },
+        {
+            "type": "string",
             "const": "b_ver_bms",
             "title": "Battery BMS version"
+        },
+        {
+            "type": "string",
+            "const": "d_alarm_status",
+            "title": "Alarm status flags"
+        },
+        {
+            "type": "string",
+            "const": "d_apparent_p_total",
+            "title": "Total apparent power (grid port)"
+        },
+        {
+            "type": "string",
+            "const": "d_battery_control",
+            "title": "Battery control mode"
         },
         {
             "type": "string",
@@ -340,8 +445,33 @@
         },
         {
             "type": "string",
+            "const": "d_connection_status",
+            "title": "Connection status"
+        },
+        {
+            "type": "string",
             "const": "d_display_mode",
             "title": "Display mode"
+        },
+        {
+            "type": "string",
+            "const": "d_ems_ctrl",
+            "title": "EMS remote control enable"
+        },
+        {
+            "type": "string",
+            "const": "d_export_limit",
+            "title": "Grid export power limit"
+        },
+        {
+            "type": "string",
+            "const": "d_f",
+            "title": "Frequency"
+        },
+        {
+            "type": "string",
+            "const": "d_hw_ver",
+            "title": "Hardware version"
         },
         {
             "type": "string",
@@ -350,8 +480,93 @@
         },
         {
             "type": "string",
+            "const": "d_inverter_1_c",
+            "title": "Inverter 1 current"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_1_p",
+            "title": "Inverter 1 power"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_1_p_active_internal",
+            "title": "Inverter 1 internal port active power"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_1_status",
+            "title": "Inverter 1 status"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_1_v",
+            "title": "Inverter 1 voltage"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_2_c",
+            "title": "Inverter 2 current"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_2_p",
+            "title": "Inverter 2 power"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_2_p_active_internal",
+            "title": "Inverter 2 internal port active power"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_2_status",
+            "title": "Inverter 2 status"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_2_v",
+            "title": "Inverter 2 voltage"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_3_c",
+            "title": "Inverter 3 current"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_3_p",
+            "title": "Inverter 3 power"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_3_p_active_internal",
+            "title": "Inverter 3 internal port active power"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_3_status",
+            "title": "Inverter 3 status"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_3_v",
+            "title": "Inverter 3 voltage"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_der_status",
+            "title": "Inverter DER status"
+        },
+        {
+            "type": "string",
             "const": "d_inverter_fault",
             "title": "Inverter fault"
+        },
+        {
+            "type": "string",
+            "const": "d_inverter_phase_count",
+            "title": "Inverter phase count"
         },
         {
             "type": "string",
@@ -375,8 +590,33 @@
         },
         {
             "type": "string",
+            "const": "d_iot_model",
+            "title": "IoT module model"
+        },
+        {
+            "type": "string",
+            "const": "d_iot_serial",
+            "title": "IoT module serial number"
+        },
+        {
+            "type": "string",
+            "const": "d_iot_ver",
+            "title": "IoT module software version"
+        },
+        {
+            "type": "string",
             "const": "d_led_mode",
             "title": "LED mode"
+        },
+        {
+            "type": "string",
+            "const": "d_local_control_mode_status",
+            "title": "Local/remote control mode status"
+        },
+        {
+            "type": "string",
+            "const": "d_manufacturer",
+            "title": "Manufacturer information"
         },
         {
             "type": "string",
@@ -390,8 +630,173 @@
         },
         {
             "type": "string",
+            "const": "d_online_component",
+            "title": "Accessory online status flags"
+        },
+        {
+            "type": "string",
+            "const": "d_op_mod_connect",
+            "title": "Energize/connect control flags"
+        },
+        {
+            "type": "string",
+            "const": "d_op_mod_gen_lim_w",
+            "title": "Charging power limit"
+        },
+        {
+            "type": "string",
+            "const": "d_op_mod_load_lim_w",
+            "title": "Discharging power limit"
+        },
+        {
+            "type": "string",
+            "const": "d_operational_mode_status",
+            "title": "Operational mode status"
+        },
+        {
+            "type": "string",
+            "const": "d_p_active",
+            "title": "Active power"
+        },
+        {
+            "type": "string",
+            "const": "d_p_active_target_l1",
+            "title": "Active power target, phase L1"
+        },
+        {
+            "type": "string",
+            "const": "d_p_active_target_l2",
+            "title": "Active power target, phase L2"
+        },
+        {
+            "type": "string",
+            "const": "d_p_active_target_l3",
+            "title": "Active power target, phase L3"
+        },
+        {
+            "type": "string",
+            "const": "d_p_apparent_target_l1",
+            "title": "Apparent power target, phase L1"
+        },
+        {
+            "type": "string",
+            "const": "d_p_apparent_target_l2",
+            "title": "Apparent power target, phase L2"
+        },
+        {
+            "type": "string",
+            "const": "d_p_apparent_target_l3",
+            "title": "Apparent power target, phase L3"
+        },
+        {
+            "type": "string",
+            "const": "d_p_limit_ramp_rate_pct",
+            "title": "Power limit ramp rate (%/s)"
+        },
+        {
+            "type": "string",
+            "const": "d_p_limit_ramp_time",
+            "title": "Power limit ramp time"
+        },
+        {
+            "type": "string",
+            "const": "d_p_limit_timeout",
+            "title": "Power limit timeout"
+        },
+        {
+            "type": "string",
+            "const": "d_p_output_level_pct",
+            "title": "Active power output level (% of rated)"
+        },
+        {
+            "type": "string",
+            "const": "d_p_reactive",
+            "title": "Reactive power"
+        },
+        {
+            "type": "string",
+            "const": "d_p_reactive_target_l1",
+            "title": "Reactive power target, phase L1"
+        },
+        {
+            "type": "string",
+            "const": "d_p_reactive_target_l2",
+            "title": "Reactive power target, phase L2"
+        },
+        {
+            "type": "string",
+            "const": "d_p_reactive_target_l3",
+            "title": "Reactive power target, phase L3"
+        },
+        {
+            "type": "string",
+            "const": "d_phase_count",
+            "title": "Grid connection phase count"
+        },
+        {
+            "type": "string",
             "const": "d_power_off",
             "title": "Device power off"
+        },
+        {
+            "type": "string",
+            "const": "d_ramp_rate",
+            "title": "Ramp rate"
+        },
+        {
+            "type": "string",
+            "const": "d_rated_f",
+            "title": "Rated frequency"
+        },
+        {
+            "type": "string",
+            "const": "d_rated_p_max",
+            "title": "Rated maximum active power"
+        },
+        {
+            "type": "string",
+            "const": "d_rated_p_max_continuous",
+            "title": "Rated maximum continuous active power"
+        },
+        {
+            "type": "string",
+            "const": "d_rated_pf_min_over_excited",
+            "title": "Rated minimum power factor, over-excited"
+        },
+        {
+            "type": "string",
+            "const": "d_rated_pf_min_under_excited",
+            "title": "Rated minimum power factor, under-excited"
+        },
+        {
+            "type": "string",
+            "const": "d_rated_v",
+            "title": "Rated voltage"
+        },
+        {
+            "type": "string",
+            "const": "d_rated_va_max_continuous",
+            "title": "Rated maximum continuous apparent power"
+        },
+        {
+            "type": "string",
+            "const": "d_rated_var_max_continuous",
+            "title": "Rated maximum continuous reactive power"
+        },
+        {
+            "type": "string",
+            "const": "d_rated_var_max_continuous_neg",
+            "title": "Rated maximum continuous reactive power (negative)"
+        },
+        {
+            "type": "string",
+            "const": "d_reactive_p_total",
+            "title": "Total reactive power (grid port)"
+        },
+        {
+            "type": "string",
+            "const": "d_self_consumption",
+            "title": "Self consumption percentage"
         },
         {
             "type": "string",
@@ -412,6 +817,16 @@
             "type": "string",
             "const": "d_status",
             "title": "Device status"
+        },
+        {
+            "type": "string",
+            "const": "d_storage_mode_status",
+            "title": "Storage mode status"
+        },
+        {
+            "type": "string",
+            "const": "d_storage_set_point",
+            "title": "Battery charge/discharge setpoint"
         },
         {
             "type": "string",
@@ -470,6 +885,101 @@
         },
         {
             "type": "string",
+            "const": "g_1_i_c",
+            "title": "Grid phase 1 current"
+        },
+        {
+            "type": "string",
+            "const": "g_1_i_p",
+            "title": "Grid phase 1 power input"
+        },
+        {
+            "type": "string",
+            "const": "g_1_i_v",
+            "title": "Grid phase 1 voltage"
+        },
+        {
+            "type": "string",
+            "const": "g_1_p_active",
+            "title": "Grid phase 1 active power"
+        },
+        {
+            "type": "string",
+            "const": "g_1_p_apparent",
+            "title": "Grid phase 1 apparent power"
+        },
+        {
+            "type": "string",
+            "const": "g_1_p_reactive",
+            "title": "Grid phase 1 reactive power"
+        },
+        {
+            "type": "string",
+            "const": "g_2_i_c",
+            "title": "Grid phase 2 current"
+        },
+        {
+            "type": "string",
+            "const": "g_2_i_p",
+            "title": "Grid phase 2 power input"
+        },
+        {
+            "type": "string",
+            "const": "g_2_i_v",
+            "title": "Grid phase 2 voltage"
+        },
+        {
+            "type": "string",
+            "const": "g_2_p_active",
+            "title": "Grid phase 2 active power"
+        },
+        {
+            "type": "string",
+            "const": "g_2_p_apparent",
+            "title": "Grid phase 2 apparent power"
+        },
+        {
+            "type": "string",
+            "const": "g_2_p_reactive",
+            "title": "Grid phase 2 reactive power"
+        },
+        {
+            "type": "string",
+            "const": "g_3_i_c",
+            "title": "Grid phase 3 current"
+        },
+        {
+            "type": "string",
+            "const": "g_3_i_p",
+            "title": "Grid phase 3 power input"
+        },
+        {
+            "type": "string",
+            "const": "g_3_i_v",
+            "title": "Grid phase 3 voltage"
+        },
+        {
+            "type": "string",
+            "const": "g_3_p_active",
+            "title": "Grid phase 3 active power"
+        },
+        {
+            "type": "string",
+            "const": "g_3_p_apparent",
+            "title": "Grid phase 3 apparent power"
+        },
+        {
+            "type": "string",
+            "const": "g_3_p_reactive",
+            "title": "Grid phase 3 reactive power"
+        },
+        {
+            "type": "string",
+            "const": "g_i_e_1",
+            "title": "Grid energy input (this inverter)"
+        },
+        {
+            "type": "string",
             "const": "g_i_e_total",
             "title": "Total grid energy input"
         },
@@ -480,6 +990,11 @@
         },
         {
             "type": "string",
+            "const": "g_i_p_1",
+            "title": "Grid power input (this inverter)"
+        },
+        {
+            "type": "string",
             "const": "g_i_p_total",
             "title": "Total grid power input"
         },
@@ -487,6 +1002,11 @@
             "type": "string",
             "const": "g_i_switch",
             "title": "Grid input switch"
+        },
+        {
+            "type": "string",
+            "const": "g_o_e_1",
+            "title": "Grid energy output (this inverter)"
         },
         {
             "type": "string",
@@ -510,6 +1030,11 @@
         },
         {
             "type": "string",
+            "const": "pv_1_i_type",
+            "title": "PV 1 input type"
+        },
+        {
+            "type": "string",
             "const": "pv_1_i_v",
             "title": "PV 1 input voltage"
         },
@@ -522,6 +1047,11 @@
             "type": "string",
             "const": "pv_2_i_p",
             "title": "PV 2 input power"
+        },
+        {
+            "type": "string",
+            "const": "pv_2_i_type",
+            "title": "PV 2 input type"
         },
         {
             "type": "string",
@@ -540,6 +1070,11 @@
         },
         {
             "type": "string",
+            "const": "pv_3_i_type",
+            "title": "PV 3 input type"
+        },
+        {
+            "type": "string",
             "const": "pv_3_i_v",
             "title": "PV 3 input voltage"
         },
@@ -555,6 +1090,11 @@
         },
         {
             "type": "string",
+            "const": "pv_4_i_type",
+            "title": "PV 4 input type"
+        },
+        {
+            "type": "string",
             "const": "pv_4_i_v",
             "title": "PV 4 input voltage"
         },
@@ -565,13 +1105,38 @@
         },
         {
             "type": "string",
+            "const": "pv_ac_e_1",
+            "title": "PV to AC energy, direct (this inverter)"
+        },
+        {
+            "type": "string",
             "const": "pv_ac_p",
             "title": "PV to AC power (direct)"
         },
         {
             "type": "string",
+            "const": "pv_ac_p_1",
+            "title": "PV to AC power, direct (this inverter)"
+        },
+        {
+            "type": "string",
+            "const": "pv_count",
+            "title": "PV string count"
+        },
+        {
+            "type": "string",
+            "const": "pv_i_e_1",
+            "title": "PV energy input (this inverter)"
+        },
+        {
+            "type": "string",
             "const": "pv_i_e_total",
             "title": "Total PV energy input"
+        },
+        {
+            "type": "string",
+            "const": "pv_i_p_1",
+            "title": "PV power input (this inverter)"
         },
         {
             "type": "string",

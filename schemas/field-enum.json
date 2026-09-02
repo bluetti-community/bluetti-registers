@@ -46,6 +46,14 @@
         {
             "type": "string",
             "const": "inverter_fault"
+        },
+        {
+            "type": "string",
+            "const": "pack_charging_status"
+        },
+        {
+            "type": "string",
+            "const": "pv_type"
         }
     ]
 }
