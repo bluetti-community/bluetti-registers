@@ -65,16 +65,6 @@
             ]
         },
         {
-            "title": "PV Type",
-            "type": "integer",
-            "enum": [
-                "reserve",
-                "car",
-                "adapter",
-                "other"
-            ]
-        },
-        {
             "title": "Output Mode",
             "type": "integer",
             "enum": [

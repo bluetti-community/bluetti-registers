@@ -50,10 +50,6 @@
         {
             "type": "string",
             "const": "pack_charging_status"
-        },
-        {
-            "type": "string",
-            "const": "pv_type"
         }
     ]
 }

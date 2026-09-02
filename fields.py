@@ -186,8 +186,13 @@ def create_special_fields(n: str, field: dict[str, Any], com: str):
         field["category"] = "diagnostic"
 
     if n in PV_TYPE_FIELDS:
-        field["content"] = "enum"
-        field["options"] = "pv_type"
+        # Confirmed against a real Balco260: it always reports 100 ("DC PV"
+        # per the official sheet), a value the "General" 0-3 range (reserve/
+        # car/adapter/other) doesn't cover - and this schema's positional
+        # enum arrays can't represent 100 without ~100 filler entries. Left
+        # as a raw uint rather than an enum this device's real value would
+        # never match.
+        field["content"] = "uint"
         field["category"] = "diagnostic"
 
     if n in UNDECODED_BITMAP_FIELDS or n in UNDECODED_STATUS_FIELDS:
