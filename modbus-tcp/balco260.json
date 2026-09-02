@@ -159,7 +159,7 @@
             "device_class": "frequency"
         },
         {
-            "name": "g_i_p_1",
+            "name": "g_i_p_local",
             "address": 50215,
             "content": "uint",
             "unit": "W",
@@ -168,7 +168,7 @@
             "length": 2
         },
         {
-            "name": "ac_o_p_1",
+            "name": "ac_o_p_local",
             "address": 50217,
             "content": "uint",
             "unit": "W",
@@ -177,7 +177,7 @@
             "length": 2
         },
         {
-            "name": "pv_i_p_1",
+            "name": "pv_i_p_local",
             "address": 50219,
             "content": "uint",
             "unit": "W",
@@ -186,7 +186,7 @@
             "length": 2
         },
         {
-            "name": "pv_ac_p_1",
+            "name": "pv_ac_p_local",
             "address": 50221,
             "content": "uint",
             "unit": "W",
@@ -195,7 +195,7 @@
             "length": 2
         },
         {
-            "name": "g_i_e_1",
+            "name": "g_i_e_local",
             "address": 50223,
             "content": "uint",
             "unit": "kWh",
@@ -206,7 +206,7 @@
             "length": 2
         },
         {
-            "name": "g_o_e_1",
+            "name": "g_o_e_local",
             "address": 50225,
             "content": "uint",
             "unit": "kWh",
@@ -217,7 +217,7 @@
             "length": 2
         },
         {
-            "name": "ac_o_e_1",
+            "name": "ac_o_e_local",
             "address": 50227,
             "content": "uint",
             "unit": "kWh",
@@ -228,7 +228,7 @@
             "length": 2
         },
         {
-            "name": "pv_i_e_1",
+            "name": "pv_i_e_local",
             "address": 50229,
             "content": "uint",
             "unit": "kWh",
@@ -239,7 +239,7 @@
             "length": 2
         },
         {
-            "name": "pv_ac_e_1",
+            "name": "pv_ac_e_local",
             "address": 50231,
             "content": "uint",
             "unit": "kWh",

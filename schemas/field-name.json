@@ -185,7 +185,7 @@
         },
         {
             "type": "string",
-            "const": "ac_o_e_1",
+            "const": "ac_o_e_local",
             "title": "AC energy output (this inverter)"
         },
         {
@@ -205,7 +205,7 @@
         },
         {
             "type": "string",
-            "const": "ac_o_p_1",
+            "const": "ac_o_p_local",
             "title": "AC power output (this inverter)"
         },
         {
@@ -975,7 +975,7 @@
         },
         {
             "type": "string",
-            "const": "g_i_e_1",
+            "const": "g_i_e_local",
             "title": "Grid energy input (this inverter)"
         },
         {
@@ -990,7 +990,7 @@
         },
         {
             "type": "string",
-            "const": "g_i_p_1",
+            "const": "g_i_p_local",
             "title": "Grid power input (this inverter)"
         },
         {
@@ -1005,7 +1005,7 @@
         },
         {
             "type": "string",
-            "const": "g_o_e_1",
+            "const": "g_o_e_local",
             "title": "Grid energy output (this inverter)"
         },
         {
@@ -1105,7 +1105,7 @@
         },
         {
             "type": "string",
-            "const": "pv_ac_e_1",
+            "const": "pv_ac_e_local",
             "title": "PV to AC energy, direct (this inverter)"
         },
         {
@@ -1115,7 +1115,7 @@
         },
         {
             "type": "string",
-            "const": "pv_ac_p_1",
+            "const": "pv_ac_p_local",
             "title": "PV to AC power, direct (this inverter)"
         },
         {
@@ -1125,7 +1125,7 @@
         },
         {
             "type": "string",
-            "const": "pv_i_e_1",
+            "const": "pv_i_e_local",
             "title": "PV energy input (this inverter)"
         },
         {
@@ -1135,7 +1135,7 @@
         },
         {
             "type": "string",
-            "const": "pv_i_p_1",
+            "const": "pv_i_p_local",
             "title": "PV power input (this inverter)"
         },
         {
