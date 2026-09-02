@@ -91,21 +91,21 @@
             "name": "ac_a_p_reactive",
             "address": 55132,
             "content": "float32",
-            "unit": "kVAR",
+            "unit": "kvar",
             "state_class": "measurement"
         },
         {
             "name": "ac_b_p_reactive",
             "address": 55134,
             "content": "float32",
-            "unit": "kVAR",
+            "unit": "kvar",
             "state_class": "measurement"
         },
         {
             "name": "ac_c_p_reactive",
             "address": 55136,
             "content": "float32",
-            "unit": "kVAR",
+            "unit": "kvar",
             "state_class": "measurement"
         },
         {
@@ -190,7 +190,7 @@
             "name": "ac_p_reactive_total",
             "address": 55160,
             "content": "float32",
-            "unit": "kVAR",
+            "unit": "kvar",
             "state_class": "measurement"
         },
         {
