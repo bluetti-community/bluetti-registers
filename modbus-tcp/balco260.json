@@ -540,8 +540,9 @@
         {
             "name": "pv_1_i_type",
             "address": 50268,
-            "content": "uint",
-            "category": "diagnostic"
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "pv_type"
         },
         {
             "name": "pv_1_i_p",
@@ -572,8 +573,9 @@
         {
             "name": "pv_2_i_type",
             "address": 50272,
-            "content": "uint",
-            "category": "diagnostic"
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "pv_type"
         },
         {
             "name": "pv_2_i_p",
@@ -604,8 +606,9 @@
         {
             "name": "pv_3_i_type",
             "address": 50276,
-            "content": "uint",
-            "category": "diagnostic"
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "pv_type"
         },
         {
             "name": "pv_3_i_p",
@@ -636,8 +639,9 @@
         {
             "name": "pv_4_i_type",
             "address": 50280,
-            "content": "uint",
-            "category": "diagnostic"
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "pv_type"
         },
         {
             "name": "pv_4_i_p",

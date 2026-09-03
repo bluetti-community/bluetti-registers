@@ -286,6 +286,22 @@ def create_special_fields(n: str, field: dict[str, Any], com: str):
             field["content"] = "enum"
             field["options"] = "pack_charging_status"
             field["category"] = "diagnostic"
+        case "pv_1_i_type" | "pv_2_i_type" | "pv_3_i_type" | "pv_4_i_type":
+            # Reintroducing this after commit 8f5dadd reverted the same idea:
+            # that attempt's PvType enum only covered 0-3 (reserve/car/
+            # adapter/other) and never mapped 100/101 (DC PV/AC PV, "only
+            # available on some models" per the official sheet's remark
+            # column) - and every real Balco260 reports 100, so every real
+            # read hit modbus_connection's "no mapping" fallback. This isn't
+            # a d_ems_ctrl-style unmodeled control register (see that case
+            # above) - it's exactly 6 well-defined values, just non-
+            # sequential ones. bluetti-modbus-lib's hand-written PvType enum
+            # class (unlike this schema's own positional enum arrays, which
+            # can't cleanly represent a jump to 100) has no trouble encoding
+            # arbitrary int values, so this time all 6 are covered.
+            field["content"] = "enum"
+            field["options"] = "pv_type"
+            field["category"] = "diagnostic"
         case "d_self_consumption":
             field["content"] = "uint"
             field["unit"] = "%"
