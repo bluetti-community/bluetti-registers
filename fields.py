@@ -41,13 +41,6 @@ PHASE_COUNT_FIELDS = [
     "d_inverter_phase_count",
 ]
 
-PV_TYPE_FIELDS = [
-    "pv_1_i_type",
-    "pv_2_i_type",
-    "pv_3_i_type",
-    "pv_4_i_type",
-]
-
 # Bitmap/status registers the official sheet documents the address for but not a
 # decoded bit/value meaning for - same "raw uint, decode later" treatment this
 # schema already gives d_inverter_warning/d_inverter_fault.
@@ -56,7 +49,6 @@ UNDECODED_BITMAP_FIELDS = [
     "b_error",
     "b_alarm_residential",
     "b_alarm_portable",
-    "pv_count",
     "d_online_component",
     "d_alarm_status",
     "d_op_mod_connect",
@@ -185,16 +177,6 @@ def create_special_fields(n: str, field: dict[str, Any], com: str):
         field["content"] = "uint"
         field["category"] = "diagnostic"
 
-    if n in PV_TYPE_FIELDS:
-        # Confirmed against a real Balco260: it always reports 100 ("DC PV"
-        # per the official sheet), a value the "General" 0-3 range (reserve/
-        # car/adapter/other) doesn't cover - and this schema's positional
-        # enum arrays can't represent 100 without ~100 filler entries. Left
-        # as a raw uint rather than an enum this device's real value would
-        # never match.
-        field["content"] = "uint"
-        field["category"] = "diagnostic"
-
     if n in UNDECODED_BITMAP_FIELDS or n in UNDECODED_STATUS_FIELDS:
         field["content"] = "uint"
         field["category"] = "diagnostic"
@@ -301,6 +283,21 @@ def create_special_fields(n: str, field: dict[str, Any], com: str):
             # arbitrary int values, so this time all 6 are covered.
             field["content"] = "enum"
             field["options"] = "pv_type"
+            field["category"] = "diagnostic"
+        case "pv_dc_count" | "pv_ac_count":
+            # Both pack into the same register (50267, "PV connection
+            # quantity per inverter") - bit0-3: number of DC PV strings,
+            # bit4-7: number of AC PV strings (the official sheet's own
+            # remark column) - the same "documented bits inside a register"
+            # situation bit_flag() already handles for d_status on S Meter,
+            # just two 4-bit counts instead of one bit. Was one undecoded
+            # "pv_count" uint (UNDECODED_BITMAP_FIELDS above); split into
+            # these two named fields at the same address instead. The actual
+            # nibble extraction is bluetti-modbus-lib's job (import.py), not
+            # this schema's - it only needs the field to exist and read as a
+            # plain uint, same as every other special-decode field here
+            # (b_c, d_status).
+            field["content"] = "uint"
             field["category"] = "diagnostic"
         case "d_self_consumption":
             field["content"] = "uint"

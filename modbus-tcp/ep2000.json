@@ -632,7 +632,13 @@
             "device_class": "current"
         },
         {
-            "name": "pv_count",
+            "name": "pv_dc_count",
+            "address": 50267,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "pv_ac_count",
             "address": 50267,
             "content": "uint",
             "category": "diagnostic"
@@ -641,8 +647,8 @@
             "name": "pv_1_i_type",
             "address": 50268,
             "content": "enum",
-            "category": "diagnostic",
-            "options": "pv_type"
+            "options": "pv_type",
+            "category": "diagnostic"
         },
         {
             "name": "pv_1_i_p",
@@ -674,8 +680,8 @@
             "name": "pv_2_i_type",
             "address": 50272,
             "content": "enum",
-            "category": "diagnostic",
-            "options": "pv_type"
+            "options": "pv_type",
+            "category": "diagnostic"
         },
         {
             "name": "pv_2_i_p",
@@ -707,8 +713,8 @@
             "name": "pv_3_i_type",
             "address": 50276,
             "content": "enum",
-            "category": "diagnostic",
-            "options": "pv_type"
+            "options": "pv_type",
+            "category": "diagnostic"
         },
         {
             "name": "pv_3_i_p",
@@ -740,8 +746,8 @@
             "name": "pv_4_i_type",
             "address": 50280,
             "content": "enum",
-            "category": "diagnostic",
-            "options": "pv_type"
+            "options": "pv_type",
+            "category": "diagnostic"
         },
         {
             "name": "pv_4_i_p",
