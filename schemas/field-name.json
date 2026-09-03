@@ -1100,6 +1100,11 @@
         },
         {
             "type": "string",
+            "const": "pv_ac_count",
+            "title": "Number of AC PV strings"
+        },
+        {
+            "type": "string",
             "const": "pv_ac_e",
             "title": "PV to AC energy (direct)"
         },
@@ -1120,8 +1125,8 @@
         },
         {
             "type": "string",
-            "const": "pv_count",
-            "title": "PV string count"
+            "const": "pv_dc_count",
+            "title": "Number of DC PV strings"
         },
         {
             "type": "string",
