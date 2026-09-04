@@ -174,11 +174,25 @@ MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
 #   decoded to 500.3 Hz (physically impossible) with the Balco260 scale;
 #   0.01 gives 50.03 Hz, confirmed against the real 50 Hz grid frequency
 #   at the same site (bluetti-official/bluetti-modbus-tcp-slave#5).
+# - g_i_p_local/ac_o_p_local/pv_i_p_local/pv_i_e_local: reverted to a single
+#   register (content "uint16", not the generic "uint" + length=2 these
+#   names get on Balco260/EP2000, where BLUETTI support confirmed all 4
+#   MULTI_REGISTER_FIELD_LENGTHS names genuinely span 2 registers). AC500
+#   timed out reading g_i_p_local (50215, 2 registers) on real hardware
+#   (bluetti-official/bluetti-modbus-tcp-slave#5) the very first time this
+#   width was tried there - the register at +1 (50216 etc.) is not
+#   confirmed to exist on AC500 the way it does on Balco260, despite the
+#   shared field name. Reverted for all 4 pending that confirmation, not
+#   just the one that happened to be read first.
 DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC500", "d_ver_arm"): {"content": "version2"},
     ("m", "AC500", "d_ver_dsp"): {"content": "version2"},
     ("m", "AC500", "d_serial"): {"content": "uint", "category": "diagnostic"},
     ("m", "AC500", "g_i_f"): {"scale": 0.01},
+    ("m", "AC500", "g_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "ac_o_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "pv_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "pv_i_e_local"): {"content": "uint16", "length": 1},
 }
 
 
@@ -409,5 +423,13 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
     if n in ["b_i_e", "b_o_e"]:
         del field["scale"]
         field["unit"] = "Wh"
+
+    # Re-applied here, after MULTI_REGISTER_FIELD_LENGTHS above - that check
+    # is purely name-keyed (no device awareness) and runs unconditionally,
+    # so it would otherwise silently overwrite an override's own "length"
+    # (see e.g. the AC500 g_i_p_local/etc. entries below, which need
+    # length=1 to stick, not the 2 Balco260/EP2000 are confirmed to need).
+    if (com, device, n) in DEVICE_FIELD_OVERRIDES:
+        field.update(DEVICE_FIELD_OVERRIDES[(com, device, n)])
 
     return field

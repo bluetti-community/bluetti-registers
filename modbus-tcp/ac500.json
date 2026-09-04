@@ -109,40 +109,40 @@
         {
             "name": "g_i_p_local",
             "address": 50215,
-            "content": "uint",
+            "content": "uint16",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
-            "length": 2
+            "length": 1
         },
         {
             "name": "ac_o_p_local",
             "address": 50217,
-            "content": "uint",
+            "content": "uint16",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
-            "length": 2
+            "length": 1
         },
         {
             "name": "pv_i_p_local",
             "address": 50219,
-            "content": "uint",
+            "content": "uint16",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
-            "length": 2
+            "length": 1
         },
         {
             "name": "pv_i_e_local",
             "address": 50229,
-            "content": "uint",
+            "content": "uint16",
             "unit": "kWh",
             "scale": 0.1,
             "category": "diagnostic",
             "state_class": "total_increasing",
             "device_class": "energy",
-            "length": 2
+            "length": 1
         },
         {
             "name": "pv_dc_count",
