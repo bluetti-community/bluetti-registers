@@ -102,7 +102,7 @@
             "address": 50214,
             "content": "uint",
             "unit": "Hz",
-            "scale": 0.1,
+            "scale": 0.01,
             "state_class": "measurement",
             "device_class": "frequency"
         },

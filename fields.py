@@ -165,10 +165,16 @@ MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
 # - d_serial: a single UINT16 register on AC500, not Balco260's 4-register
 #   UINT64 "serial" content type - the generic "_serial" suffix rule above
 #   would otherwise apply the wrong (4-register) shape.
+# - g_i_f: grid frequency scales by 0.01 on AC500, not Balco260's 0.1 (the
+#   generic "_f" suffix rule's default) - a real AC500 reading of 5003
+#   decoded to 500.3 Hz (physically impossible) with the Balco260 scale;
+#   0.01 gives 50.03 Hz, confirmed against the real 50 Hz grid frequency
+#   at the same site (bluetti-official/bluetti-modbus-tcp-slave#5).
 DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC500", "d_ver_arm"): {"content": "version2"},
     ("m", "AC500", "d_ver_dsp"): {"content": "version2"},
     ("m", "AC500", "d_serial"): {"content": "uint", "category": "diagnostic"},
+    ("m", "AC500", "g_i_f"): {"scale": 0.01},
 }
 
 
