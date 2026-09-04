@@ -143,7 +143,36 @@ MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
 }
 
 
-def create_special_fields(n: str, field: dict[str, Any], com: str):
+# Per-(com, device, field) overrides for a field name that means the same
+# thing across devices but is encoded differently on one of them - the
+# generic rules above (and the match block below) only key off the field
+# name, with no device context, so a genuine per-device encoding difference
+# can't be expressed there without also changing every other device sharing
+# that name. Keyed on `com` too, not just `device`: AC500 already has an
+# existing, separately-confirmed bluetooth.csv entry that happens to share
+# the same device name and field names as this new modbus-tcp one - without
+# `com` in the key, an override meant for the modbus-tcp scan would silently
+# also rewrite the bluetooth profile's fields, which have no evidence behind
+# a change at all.
+#
+# Confirmed on AC500's modbus-tcp profile (bluetti-registers#13, community-
+# contributed real-hardware scan, not yet confirmed by Bluetti support):
+# - d_ver_arm/d_ver_dsp: 2-part "major*100 + minor" firmware version,
+#   unlike Balco260/EP2000's confirmed 3-part "major*10000 + minor*100 +
+#   patch" for the same field names (dotted_version()'s own "version"
+#   content type) - verified against 2 independent samples matching the
+#   Bluetti app's reported ARM/DSP versions exactly.
+# - d_serial: a single UINT16 register on AC500, not Balco260's 4-register
+#   UINT64 "serial" content type - the generic "_serial" suffix rule above
+#   would otherwise apply the wrong (4-register) shape.
+DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
+    ("m", "AC500", "d_ver_arm"): {"content": "version2"},
+    ("m", "AC500", "d_ver_dsp"): {"content": "version2"},
+    ("m", "AC500", "d_serial"): {"content": "uint", "category": "diagnostic"},
+}
+
+
+def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
     if n in AMOUNT_FIELDS:
         field["content"] = "uint"
         field["category"] = "diagnostic"
@@ -340,6 +369,9 @@ def create_special_fields(n: str, field: dict[str, Any], com: str):
             field["content"] = "string"
             field["length"] = 2
             field["category"] = "diagnostic"
+
+    if (com, device, n) in DEVICE_FIELD_OVERRIDES:
+        field.update(DEVICE_FIELD_OVERRIDES[(com, device, n)])
 
     # Bluetooth register
     if com == "b":

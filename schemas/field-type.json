@@ -33,6 +33,10 @@
         },
         {
             "type": "string",
+            "const": "version2"
+        },
+        {
+            "type": "string",
             "const": "uint16"
         },
         {

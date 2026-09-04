@@ -72,7 +72,7 @@ def getDevicesModbusTcp():
     return filter(is_json, devices)
 
 
-def create_field(n: str, com: str):
+def create_field(n: str, com: str, device: str):
     outp = {
         "name": n,
         "address": -1,
@@ -127,4 +127,4 @@ def create_field(n: str, com: str):
         outp["content"] = "serial"
         outp["category"] = "diagnostic"
 
-    return create_special_fields(n, outp, com)
+    return create_special_fields(n, outp, com, device)
