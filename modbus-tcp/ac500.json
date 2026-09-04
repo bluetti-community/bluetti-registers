@@ -312,6 +312,12 @@
             "num_max": 100,
             "state_class": "measurement",
             "device_class": "battery"
+        },
+        {
+            "name": "ac_o_switch",
+            "address": 57001,
+            "content": "bool",
+            "writeable": true
         }
     ]
 }
