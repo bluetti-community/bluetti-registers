@@ -1,11 +1,15 @@
 from typing import Any
 
+# b_ver_count (51210): how many of the 4 MCU version slots at b_ver_1-4
+# (51211-51218) are actually valid - confirmed by BLUETTI support directly
+# ("for Balco260, typically only slot 1 is valid"), not previously mapped.
 AMOUNT_FIELDS = [
     "d_num_inverters",
     "d_num_battery_packs",
     "b_cycle_count",
     "b_cell_count",
     "b_ntc_count",
+    "b_ver_count",
 ]
 
 BATTERY_SOC = [

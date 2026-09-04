@@ -425,6 +425,11 @@
         },
         {
             "type": "string",
+            "const": "b_ver_count",
+            "title": "Number of valid battery MCU version slots"
+        },
+        {
+            "type": "string",
             "const": "d_alarm_status",
             "title": "Alarm status flags"
         },
