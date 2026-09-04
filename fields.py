@@ -184,6 +184,16 @@ MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
 #   confirmed to exist on AC500 the way it does on Balco260, despite the
 #   shared field name. Reverted for all 4 pending that confirmation, not
 #   just the one that happened to be read first.
+# - d_inverter_type: the 2 ASCII bytes within each register are swapped
+#   compared to Balco260 ("string_swapped" content, not "string") - a real
+#   AC500 decoded to "CA05 0" with Balco260's byte order, matching exactly
+#   what its real, confirmed value ("AC500" - read via a real user's manual
+#   generic-Modbus config, see bluetti-registers#13's own screenshots)
+#   becomes when re-encoded with each register's first character in the
+#   high byte instead of the low byte (bluetti-official/bluetti-modbus-
+#   tcp-slave#5). Balco260's own d_inverter_type ("Balco260") already
+#   decodes correctly with the existing byte order, so this is a real
+#   per-device difference, not a universal fix.
 DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC500", "d_ver_arm"): {"content": "version2"},
     ("m", "AC500", "d_ver_dsp"): {"content": "version2"},
@@ -193,6 +203,7 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC500", "ac_o_p_local"): {"content": "uint16", "length": 1},
     ("m", "AC500", "pv_i_p_local"): {"content": "uint16", "length": 1},
     ("m", "AC500", "pv_i_e_local"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "d_inverter_type"): {"content": "string_swapped"},
 }
 
 

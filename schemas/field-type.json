@@ -21,6 +21,10 @@
         },
         {
             "type": "string",
+            "const": "string_swapped"
+        },
+        {
+            "type": "string",
             "const": "swstring"
         },
         {

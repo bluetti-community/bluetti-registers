@@ -75,7 +75,7 @@
         {
             "name": "d_inverter_type",
             "address": 50200,
-            "content": "string",
+            "content": "string_swapped",
             "length": 6,
             "category": "diagnostic"
         },
