@@ -318,6 +318,24 @@
             "address": 57001,
             "content": "bool",
             "writeable": true
+        },
+        {
+            "name": "dc_o_switch",
+            "address": 57005,
+            "content": "bool",
+            "writeable": true
+        },
+        {
+            "name": "g_i_switch",
+            "address": 57009,
+            "content": "bool",
+            "writeable": true
+        },
+        {
+            "name": "g_o_switch",
+            "address": 57010,
+            "content": "bool",
+            "writeable": true
         }
     ]
 }
