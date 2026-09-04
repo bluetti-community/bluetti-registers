@@ -1031,6 +1031,12 @@
             "length": 4
         },
         {
+            "name": "b_ver_count",
+            "address": 51210,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
             "name": "b_ver_1",
             "address": 51211,
             "content": "version",
