@@ -147,7 +147,7 @@ MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
 }
 
 
-def create_special_fields(n: str, field: dict[str, Any], com: str):
+def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
     if n in AMOUNT_FIELDS:
         field["content"] = "uint"
         field["category"] = "diagnostic"
@@ -234,6 +234,16 @@ def create_special_fields(n: str, field: dict[str, Any], com: str):
             field["num_max"] = 100
             field["writeable"] = True
             field["category"] = "config"
+            if device == "Balco260":
+                # 5-90, not 0-100 - confirmed against the official BLUETTI
+                # app's own SOC setting screen for this device, which only
+                # allows the discharge-stop threshold to be set within that
+                # range. No official register spec confirms this, and it
+                # isn't extended to other devices sharing this field name
+                # without equivalent evidence for each - b_soc_high is left
+                # at 0-100 pending its own confirmation, even on Balco260.
+                field["num_min"] = 5
+                field["num_max"] = 90
         case "b_soc_high":
             field["content"] = "uint"
             field["unit"] = "%"

@@ -29,7 +29,7 @@ def generate(
     fields = []
 
     for n, a in field_registers.items():
-        field = create_field(n, com)
+        field = create_field(n, com, name)
         field["address"] = a
 
         fields.append(field)
