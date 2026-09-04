@@ -181,15 +181,6 @@
             "scale": 0.1
         },
         {
-            "name": "pv_1_i_c",
-            "address": 50271,
-            "content": "uint",
-            "unit": "A",
-            "scale": 0.1,
-            "state_class": "measurement",
-            "device_class": "current"
-        },
-        {
             "name": "pv_2_i_type",
             "address": 50272,
             "content": "enum",
@@ -203,15 +194,6 @@
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
-        },
-        {
-            "name": "pv_2_i_c",
-            "address": 50275,
-            "content": "uint",
-            "unit": "A",
-            "scale": 0.1,
-            "state_class": "measurement",
-            "device_class": "current"
         },
         {
             "name": "d_num_battery_packs",
