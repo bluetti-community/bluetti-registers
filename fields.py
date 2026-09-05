@@ -166,9 +166,19 @@ MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
 #   patch" for the same field names (dotted_version()'s own "version"
 #   content type) - verified against 2 independent samples matching the
 #   Bluetti app's reported ARM/DSP versions exactly.
-# - d_serial: a single UINT16 register on AC500, not Balco260's 4-register
-#   UINT64 "serial" content type - the generic "_serial" suffix rule above
-#   would otherwise apply the wrong (4-register) shape.
+# - d_serial: genuinely 4 registers like Balco260 (the generic "_serial"
+#   suffix rule's own default), but with the 16-bit words in reverse order
+#   ("serial_swapped" content, not "serial") - a real AC500's serial number
+#   plate reads "AC5002241000084770", but bluetti-modread decoded d_serial
+#   to 38178 (just register 50206's raw value, 0x9522, on its own). Reading
+#   registers 50206-50209 as one 4-register block gives raw hex
+#   9522C60302090000; reversing the 4 words (9522 C603 0209 0000 ->
+#   0000 0209 C603 9522) and decoding that as a big-endian uint64 gives
+#   2241000084770 - the exact digits from the serial plate (see
+#   bluetti-official/bluetti-modbus-tcp-slave#5). An earlier version of
+#   this override assumed d_serial was a single UINT16 register on AC500 -
+#   that was wrong; it read register 50206 alone and happened to produce a
+#   plausible-looking (but incomplete) number.
 # - g_i_f: grid frequency scales by 0.01 on AC500, not Balco260's 0.1 (the
 #   generic "_f" suffix rule's default) - a real AC500 reading of 5003
 #   decoded to 500.3 Hz (physically impossible) with the Balco260 scale;
@@ -197,7 +207,7 @@ MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
 DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC500", "d_ver_arm"): {"content": "version2"},
     ("m", "AC500", "d_ver_dsp"): {"content": "version2"},
-    ("m", "AC500", "d_serial"): {"content": "uint", "category": "diagnostic"},
+    ("m", "AC500", "d_serial"): {"content": "serial_swapped"},
     ("m", "AC500", "g_i_f"): {"scale": 0.01},
     ("m", "AC500", "g_i_p_local"): {"content": "uint16", "length": 1},
     ("m", "AC500", "ac_o_p_local"): {"content": "uint16", "length": 1},
