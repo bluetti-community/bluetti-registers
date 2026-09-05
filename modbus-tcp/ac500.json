@@ -30,14 +30,6 @@
             "device_class": "power"
         },
         {
-            "name": "d_inverter_total",
-            "address": 50008,
-            "content": "uint",
-            "unit": "W",
-            "state_class": "measurement",
-            "device_class": "power"
-        },
-        {
             "name": "ac_o_e_total",
             "address": 50012,
             "content": "uint",
