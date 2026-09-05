@@ -552,7 +552,7 @@
         {
             "name": "d_inverter_1_p",
             "address": 50256,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
@@ -585,7 +585,7 @@
         {
             "name": "d_inverter_2_p",
             "address": 50260,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
@@ -618,7 +618,7 @@
         {
             "name": "d_inverter_3_p",
             "address": 50264,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power"

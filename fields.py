@@ -253,6 +253,23 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
             field["scale"] = 0.1
             field["state_class"] = "measurement"
             field["device_class"] = "current"
+        case "d_inverter_1_p" | "d_inverter_2_p" | "d_inverter_3_p":
+            # Signed ("int"), contradicting the official Cassandra register
+            # list's own "uint" for these specific fields (50256/50260/
+            # 50264, "Inverter1/2/3 Power") - real-world evidence overrides
+            # the spec here, same as AC500's d_serial earlier. A live
+            # Balco260 diagnostics dump (single active inverter,
+            # d_num_inverters=1) showed d_inverter_1_p decode to 64325
+            # while d_inverter_total (50008, already confirmed signed and
+            # fixed - see the case above) read -1211 at the same instant.
+            # With exactly one inverter active, the total must equal that
+            # one inverter's own value - true only if d_inverter_1_p is
+            # also signed: 64325 reinterpreted as a 16-bit signed value is
+            # -1211, an exact match, not an approximation.
+            field["content"] = "int"
+            field["unit"] = "W"
+            field["state_class"] = "measurement"
+            field["device_class"] = "power"
         case "d_inverter_status":
             field["options"] = "inverter_status"
         case "d_inverter_warning":
