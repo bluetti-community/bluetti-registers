@@ -92,6 +92,25 @@ EP2000_DIAGNOSTIC_FIELDS = [
 # with content "string" already carry their own length (set inline below/in the
 # match block) and aren't repeated here.
 MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
+    # Confirmed against the official Cassandra register list
+    # (bluetti-official/bluetti-modbus-tcp-slave's own
+    # doc/Bluetti-Open-Modbus-TCP-register-list.xlsx, "BalcoXX" sheet,
+    # "Inverter Summary Information" block, 50002-50020) - every one of
+    # these was previously silently truncated to 1 register (the generic
+    # "_p"/"_e" suffix rules' own uint16 default), since a bare `length=2`
+    # here only reaches ENUM/STRING fields - get_type() in bluetti-modbus's
+    # import.py also needs WIDE_UINT_FIELDS/WIDE_INT_FIELDS entries for
+    # these, or the wider length is dropped there too.
+    "ac_o_p_total": 2,
+    "pv_i_p_total": 2,
+    "g_i_p_total": 2,
+    "d_inverter_total": 2,
+    "pv_ac_p": 2,
+    "ac_o_e_total": 2,
+    "pv_i_e_total": 2,
+    "g_i_e_total": 2,
+    "g_o_e_total": 2,
+    "pv_ac_e": 2,
     "g_i_p_local": 2,
     "ac_o_p_local": 2,
     "pv_i_p_local": 2,
@@ -206,11 +225,34 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
         field.pop("unit", None)
 
     match (n):
-        case "d_inverter_total":
-            field["content"] = "uint"
+        case "g_i_p_total" | "d_inverter_total" | "g_i_p_local":
+            # Signed ("int"), not the generic "_p" suffix rule's own
+            # unsigned default - confirmed by the official Cassandra
+            # register list (see MULTI_REGISTER_FIELD_LENGTHS's own comment
+            # above): "Grid Power (Total)" (50006) and "Inverter Power
+            # (Total)" (50008) are both documented "int"; "Grid Charging
+            # Power (Single)" (50215, g_i_p_local) likewise. Real-world
+            # evidence: a live Balco260 diagnostics dump showed
+            # d_inverter_total decode to 64923 - impossible for this
+            # device class - while charging; reinterpreted as signed
+            # 32-bit, the sign flips to a small, physically sane negative
+            # value (a "power flowing into the battery" convention).
+            field["content"] = "int"
             field["unit"] = "W"
             field["state_class"] = "measurement"
             field["device_class"] = "power"
+        case "g_1_i_c" | "g_2_i_c" | "g_3_i_c":
+            # Signed ("int"), unlike the generic "_c" suffix rule's own
+            # unsigned default - confirmed by the official Cassandra
+            # register list: "Grid1/2/3 Current" (50237/50240/50243) are
+            # each documented "int", unlike the AC Load/PV current fields
+            # nearby (all "uint"). Single register each, unlike the "int"
+            # fields above - no width fix needed here, only the sign.
+            field["content"] = "int"
+            field["unit"] = "A"
+            field["scale"] = 0.1
+            field["state_class"] = "measurement"
+            field["device_class"] = "current"
         case "d_inverter_status":
             field["options"] = "inverter_status"
         case "d_inverter_warning":
