@@ -7,6 +7,9 @@ Just import registers using the JSON file of a release. The JSON Schemas
 describing their shape (see `schemas/`) are also published as a browsable
 site via GitHub Pages (`.github/workflows/static.yml`).
 
+Want to add or fix a register, including from real hardware you own? See
+[CONTRIBUTING.md](CONTRIBUTING.md) - no coding experience required to help.
+
 ## Naming convention for field names
 
 1. Type (PV/AC/DC/Grid/Device/Battery) (short: pv/ac/dc/g/d/b)
