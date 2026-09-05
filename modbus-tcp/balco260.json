@@ -17,7 +17,8 @@
             "content": "uint",
             "unit": "W",
             "state_class": "measurement",
-            "device_class": "power"
+            "device_class": "power",
+            "length": 2
         },
         {
             "name": "pv_i_p_total",
@@ -25,23 +26,26 @@
             "content": "uint",
             "unit": "W",
             "state_class": "measurement",
-            "device_class": "power"
+            "device_class": "power",
+            "length": 2
         },
         {
             "name": "g_i_p_total",
             "address": 50006,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
-            "device_class": "power"
+            "device_class": "power",
+            "length": 2
         },
         {
             "name": "d_inverter_total",
             "address": 50008,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
-            "device_class": "power"
+            "device_class": "power",
+            "length": 2
         },
         {
             "name": "pv_ac_p",
@@ -49,7 +53,8 @@
             "content": "uint",
             "unit": "W",
             "state_class": "measurement",
-            "device_class": "power"
+            "device_class": "power",
+            "length": 2
         },
         {
             "name": "ac_o_e_total",
@@ -59,7 +64,8 @@
             "scale": 0.1,
             "category": "diagnostic",
             "state_class": "total_increasing",
-            "device_class": "energy"
+            "device_class": "energy",
+            "length": 2
         },
         {
             "name": "pv_i_e_total",
@@ -69,7 +75,8 @@
             "scale": 0.1,
             "category": "diagnostic",
             "state_class": "total_increasing",
-            "device_class": "energy"
+            "device_class": "energy",
+            "length": 2
         },
         {
             "name": "g_i_e_total",
@@ -79,7 +86,8 @@
             "scale": 0.1,
             "category": "diagnostic",
             "state_class": "total_increasing",
-            "device_class": "energy"
+            "device_class": "energy",
+            "length": 2
         },
         {
             "name": "g_o_e_total",
@@ -89,7 +97,8 @@
             "scale": 0.1,
             "category": "diagnostic",
             "state_class": "total_increasing",
-            "device_class": "energy"
+            "device_class": "energy",
+            "length": 2
         },
         {
             "name": "pv_ac_e",
@@ -99,7 +108,8 @@
             "scale": 0.1,
             "category": "diagnostic",
             "state_class": "total_increasing",
-            "device_class": "energy"
+            "device_class": "energy",
+            "length": 2
         },
         {
             "name": "d_inverter_status",
@@ -161,7 +171,7 @@
         {
             "name": "g_i_p_local",
             "address": 50215,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -284,7 +294,7 @@
         {
             "name": "g_1_i_c",
             "address": 50237,
-            "content": "uint",
+            "content": "int",
             "unit": "A",
             "scale": 0.1,
             "state_class": "measurement",
@@ -310,7 +320,7 @@
         {
             "name": "g_2_i_c",
             "address": 50240,
-            "content": "uint",
+            "content": "int",
             "unit": "A",
             "scale": 0.1,
             "state_class": "measurement",
@@ -336,7 +346,7 @@
         {
             "name": "g_3_i_c",
             "address": 50243,
-            "content": "uint",
+            "content": "int",
             "unit": "A",
             "scale": 0.1,
             "state_class": "measurement",
