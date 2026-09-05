@@ -17,10 +17,6 @@
         },
         {
             "type": "string",
-            "const": "serial_swapped"
-        },
-        {
-            "type": "string",
             "const": "string"
         },
         {

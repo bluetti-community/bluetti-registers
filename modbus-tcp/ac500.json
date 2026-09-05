@@ -82,7 +82,7 @@
         {
             "name": "d_serial",
             "address": 50206,
-            "content": "serial_swapped",
+            "content": "serial",
             "category": "diagnostic"
         },
         {
