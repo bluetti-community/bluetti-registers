@@ -30,7 +30,9 @@ name.
    - Fixing an address: edit the cell for the specific device row.
    - Add your GitHub handle (`@yourname`) to that device's `contributors` cell if it isn't already
      there - `validate.py` requires at least one contributor per device, and this is how real
-     verification work gets credited. Multiple contributors are comma-separated.
+     verification work gets credited. Multiple contributors are **space**-separated (not comma -
+     `generate-from-csv.py` splits each CSV line on `,` first, then splits the contributors cell
+     on ` `, so a comma inside it would be parsed as a new column).
 2. If the field's *type* (content, unit, scale, range, or writability) needs to change, that's in
    `fields.py`, not the CSV - the CSV only carries addresses. Most fields are handled by name in
    one place; if the same field name needs to behave differently on one specific device (a

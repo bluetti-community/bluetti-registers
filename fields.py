@@ -166,6 +166,65 @@ MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
 }
 
 
+# Per-(com, device, field) overrides for a field name that means the same
+# thing across devices but is encoded differently on one of them - the
+# generic rules above (and the match block below) only key off the field
+# name, with no device context, so a genuine per-device encoding difference
+# can't be expressed there without also changing every other device sharing
+# that name. Keyed on `com` too, not just `device`: AC500 could in principle
+# have a separately-confirmed bluetooth.csv entry sharing the same device
+# name and field names as its modbus-tcp one - without `com` in the key, an
+# override meant for one scan would silently also rewrite the other.
+#
+# Confirmed on AC500's modbus-tcp profile (community-contributed real-
+# hardware testing, not yet confirmed by BLUETTI support directly - see
+# bluetti-official/bluetti-modbus-tcp-slave#5):
+# - d_ver_arm/d_ver_dsp: 2-part "major*100 + minor" firmware version,
+#   unlike Balco260/EP2000's confirmed 3-part "major*10000 + minor*100 +
+#   patch" for the same field names (dotted_version()'s own "version"
+#   content type) - verified against independent samples matching the
+#   Bluetti app's reported ARM/DSP versions exactly.
+# - g_i_f: grid frequency scales by 0.01 on AC500, not Balco260's 0.1 (the
+#   generic "_f" suffix rule's default) - a real AC500 reading of 5003
+#   decoded to 500.3 Hz (physically impossible) with the Balco260 scale;
+#   0.01 gives 50.03 Hz, confirmed against the real 50 Hz grid frequency at
+#   the same site.
+# - g_i_p_local/ac_o_p_local/pv_i_p_local/pv_i_e_local: reverted to a single
+#   register (content "uint16", not the generic "uint" + length=2 these
+#   names get on Balco260/EP2000, where BLUETTI support confirmed all 4
+#   MULTI_REGISTER_FIELD_LENGTHS names genuinely span 2 registers). AC500
+#   timed out reading g_i_p_local (2 registers) on real hardware the very
+#   first time this width was tried there - the register at +1 is not
+#   confirmed to exist on AC500 the way it does on Balco260, despite the
+#   shared field name. Reverted for all 4 pending that confirmation.
+# - d_inverter_type: the 2 ASCII bytes within each register are swapped
+#   compared to Balco260 ("string_swapped" content, not "string") - a real
+#   AC500 decoded to "CA05 0" with Balco260's byte order, matching exactly
+#   what its real, confirmed value ("AC500") becomes when re-encoded with
+#   each register's first character in the high byte instead of the low
+#   byte. Balco260's own d_inverter_type ("Balco260") already decodes
+#   correctly with the existing byte order, so this is a real per-device
+#   difference, not a universal fix.
+#
+# d_serial and d_inverter_total are deliberately NOT here: an earlier AC500
+# beta override forced d_serial to a single register, which was wrong (it's
+# genuinely 4 registers like every other device's "serial" content, no
+# swapping needed - the generic "_serial" suffix rule's default already
+# works); and d_inverter_total was removed from AC500 entirely rather than
+# guess a width/sign fix without a verified single-active-inverter test
+# (see bluetti-official/bluetti-modbus-tcp-slave#5's later comments).
+DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
+    ("m", "AC500", "d_ver_arm"): {"content": "version2"},
+    ("m", "AC500", "d_ver_dsp"): {"content": "version2"},
+    ("m", "AC500", "g_i_f"): {"scale": 0.01},
+    ("m", "AC500", "g_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "ac_o_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "pv_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "pv_i_e_local"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "d_inverter_type"): {"content": "string_swapped"},
+}
+
+
 def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
     if n in AMOUNT_FIELDS:
         field["content"] = "uint"
@@ -414,6 +473,9 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
             field["length"] = 2
             field["category"] = "diagnostic"
 
+    if (com, device, n) in DEVICE_FIELD_OVERRIDES:
+        field.update(DEVICE_FIELD_OVERRIDES[(com, device, n)])
+
     # Bluetooth register
     if com == "b":
         return field
@@ -440,5 +502,13 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
     if n in ["b_i_e", "b_o_e"]:
         del field["scale"]
         field["unit"] = "Wh"
+
+    # Re-applied here, after MULTI_REGISTER_FIELD_LENGTHS above - that check
+    # is purely name-keyed (no device awareness) and runs unconditionally,
+    # so it would otherwise silently overwrite an override's own "length"
+    # (see e.g. the AC500 g_i_p_local/etc. entries above, which need
+    # length=1 to stick, not the 2 Balco260/EP2000 are confirmed to need).
+    if (com, device, n) in DEVICE_FIELD_OVERRIDES:
+        field.update(DEVICE_FIELD_OVERRIDES[(com, device, n)])
 
     return field
