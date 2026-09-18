@@ -8,29 +8,29 @@
         {
             "name": "ac_o_p_total",
             "address": 50002,
-            "content": "uint",
+            "content": "uint16",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
-            "length": 2
+            "length": 1
         },
         {
             "name": "pv_i_p_total",
             "address": 50004,
-            "content": "uint",
+            "content": "uint16",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
-            "length": 2
+            "length": 1
         },
         {
             "name": "g_i_p_total",
             "address": 50006,
-            "content": "int",
+            "content": "int16",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
-            "length": 2
+            "length": 1
         },
         {
             "name": "ac_o_e_total",

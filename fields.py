@@ -238,6 +238,13 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # were not tested for writing, and the owner asked for them to stay
     # read-only (battery protection thresholds) - "writeable": False is
     # honoured below by dropping the key.
+    # The three power totals are single registers here as on AC500 (read
+    # that way against the BLE readings; the "+1" register of the generic
+    # 2-register widening is unconfirmed on both) - stated in the schema so
+    # a consumer needs no device-specific knowledge to read them right.
+    ("m", "AC200L", "ac_o_p_total"): {"content": "uint16", "length": 1},
+    ("m", "AC200L", "pv_i_p_total"): {"content": "uint16", "length": 1},
+    ("m", "AC200L", "g_i_p_total"): {"content": "int16", "length": 1},
     ("m", "AC200L", "d_ver_arm"): {"content": "version2"},
     ("m", "AC200L", "d_ver_dsp"): {"content": "version2"},
     ("m", "AC200L", "g_i_p_local"): {"content": "uint16", "length": 1},
