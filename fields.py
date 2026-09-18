@@ -222,6 +222,33 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC500", "pv_i_p_local"): {"content": "uint16", "length": 1},
     ("m", "AC500", "pv_i_e_local"): {"content": "uint16", "length": 1},
     ("m", "AC500", "d_inverter_type"): {"content": "string_swapped"},
+    # AC200L (profile name = the device's own d_inverter_type string; confirmed
+    # on an AC200L2 only, 2026-09-17, bluetti-community/bluetti-modbus#76 by
+    # @awrede): every value cross-checked live against the same unit's BLE
+    # readings (bluetti_bt). Same encoding family as AC500 for the version,
+    # type-string and single-register "(Single)" fields; two scales differ
+    # from AC500 at the same addresses:
+    # - b_v_total: raw 5409 is 54.09 V (a single ~51.2 V-nominal pack near
+    #   full), not AC500's 540.9 V - scale 0.01.
+    # - b_c_total: same block, assumed to share the encoding - 0.01, NOT
+    #   independently confirmed (the pack was idle at 100 % during testing).
+    # g_i_f is deliberately absent: raw 599 was 59.9 Hz against BLE's 59.90,
+    # i.e. the generic "_f" default of 0.1 - AC500's 0.01 is the exception.
+    # b_soc_low/b_soc_high read 20/80 matching BLE's soc_low/soc_high but
+    # were not tested for writing, and the owner asked for them to stay
+    # read-only (battery protection thresholds) - "writeable": False is
+    # honoured below by dropping the key.
+    ("m", "AC200L", "d_ver_arm"): {"content": "version2"},
+    ("m", "AC200L", "d_ver_dsp"): {"content": "version2"},
+    ("m", "AC200L", "g_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC200L", "ac_o_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC200L", "pv_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC200L", "pv_i_e_local"): {"content": "uint16", "length": 1},
+    ("m", "AC200L", "d_inverter_type"): {"content": "string_swapped"},
+    ("m", "AC200L", "b_v_total"): {"scale": 0.01},
+    ("m", "AC200L", "b_c_total"): {"scale": 0.01},
+    ("m", "AC200L", "b_soc_low"): {"writeable": False},
+    ("m", "AC200L", "b_soc_high"): {"writeable": False},
 }
 
 
@@ -510,5 +537,11 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
     # length=1 to stick, not the 2 Balco260/EP2000 are confirmed to need).
     if (com, device, n) in DEVICE_FIELD_OVERRIDES:
         field.update(DEVICE_FIELD_OVERRIDES[(com, device, n)])
+        # An override can take writability away from a field the generic
+        # rules make writeable (AC200L's b_soc_low/b_soc_high); the schema
+        # only knows the key as "set to true", so drop it rather than emit
+        # false.
+        if field.get("writeable") is False:
+            del field["writeable"]
 
     return field
