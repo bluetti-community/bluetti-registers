@@ -222,6 +222,18 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC500", "pv_i_p_local"): {"content": "uint16", "length": 1},
     ("m", "AC500", "pv_i_e_local"): {"content": "uint16", "length": 1},
     ("m", "AC500", "d_inverter_type"): {"content": "string_swapped"},
+    # Previously hand-edited into ac500.json after generation (#13's beta
+    # rounds, #26), so every regeneration silently undid them - stated here
+    # so the generator reproduces what real hardware confirmed:
+    # - ac_o_p_total/pv_i_p_total/g_i_p_total are single registers (a
+    #   3-run register scan never saw the "+1" register answer, and reading
+    #   the pair as a block times out - bluetti-official/bluetti-modbus-tcp-slave#5);
+    # - g_i_switch is not a functional switch (stuck at 1, #26), so it
+    #   carries no writeable flag.
+    ("m", "AC500", "ac_o_p_total"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "pv_i_p_total"): {"content": "uint16", "length": 1},
+    ("m", "AC500", "g_i_p_total"): {"content": "int16", "length": 1},
+    ("m", "AC500", "g_i_switch"): {"writeable": False},
     # AC200L (profile name = the device's own d_inverter_type string; confirmed
     # on an AC200L2 only, 2026-09-17, bluetti-community/bluetti-modbus#76 by
     # @awrede): every value cross-checked live against the same unit's BLE
