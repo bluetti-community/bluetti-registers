@@ -268,6 +268,31 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC200L", "b_c_total"): {"scale": 0.01},
     ("m", "AC200L", "b_soc_low"): {"writeable": False},
     ("m", "AC200L", "b_soc_high"): {"writeable": False},
+    # EP500Pro (the device calls itself "EP500P" at 50200; also sold as
+    # EP500P) - read on a real unit with the AC500 profile, 2026-09-19,
+    # by @TobiGitHubi (bluetti-registers#35): every AC500 field answered,
+    # SOC / AC output / PV input matching the app, b_v_total 52.5 V at the
+    # AC500 scale (a ~51 V pack - not AC200L's 0.01), ARM/DSP versions
+    # matching the app as 2-part numbers, type string swapped, the
+    # "(Single)" fields populated (pv_i_e_local 1451.5 kWh). Same overrides
+    # as AC500, therefore. Unconfirmed on this device, carried over from
+    # AC500: g_i_f's 0.01 (the unit was off-grid, 0.0 Hz), b_c_total's
+    # scale and sign, the energy totals (read 0.0), the PV fields (read 0).
+    # Nothing writeable yet: no owner has tested a write - beta profile.
+    ("m", "EP500Pro", "ac_o_p_total"): {"content": "uint16", "length": 1},
+    ("m", "EP500Pro", "pv_i_p_total"): {"content": "uint16", "length": 1},
+    ("m", "EP500Pro", "g_i_p_total"): {"content": "int16", "length": 1},
+    ("m", "EP500Pro", "d_ver_arm"): {"content": "version2"},
+    ("m", "EP500Pro", "d_ver_dsp"): {"content": "version2"},
+    ("m", "EP500Pro", "g_i_f"): {"scale": 0.01},
+    ("m", "EP500Pro", "g_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "EP500Pro", "ac_o_p_local"): {"content": "uint16", "length": 1},
+    ("m", "EP500Pro", "pv_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "EP500Pro", "pv_i_e_local"): {"content": "uint16", "length": 1},
+    ("m", "EP500Pro", "d_inverter_type"): {"content": "string_swapped"},
+    ("m", "EP500Pro", "ac_o_switch"): {"writeable": False},
+    ("m", "EP500Pro", "dc_o_switch"): {"writeable": False},
+    ("m", "EP500Pro", "g_i_switch"): {"writeable": False},
 }
 
 
