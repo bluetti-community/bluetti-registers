@@ -1,8 +1,9 @@
 {
     "$schema": "https://bluetti-community.github.io/bluetti-registers/device.json",
-    "name": "EP500Pro",
+    "name": "EP500P",
     "contributors": [
-        "@TobiGitHubi"
+        "@TobiGitHubi",
+        "@BOPOHOP"
     ],
     "fields": [
         {
@@ -229,17 +230,37 @@
         {
             "name": "ac_o_switch",
             "address": 57001,
-            "content": "bool"
+            "content": "bool",
+            "writeable": true
         },
         {
             "name": "dc_o_switch",
             "address": 57005,
-            "content": "bool"
+            "content": "bool",
+            "writeable": true
         },
         {
             "name": "g_i_switch",
             "address": 57009,
             "content": "bool"
+        },
+        {
+            "name": "b_soc_low",
+            "address": 57016,
+            "content": "uint",
+            "unit": "%",
+            "num_min": 0,
+            "num_max": 100,
+            "category": "config"
+        },
+        {
+            "name": "b_soc_high",
+            "address": 57017,
+            "content": "uint",
+            "unit": "%",
+            "num_min": 0,
+            "num_max": 100,
+            "category": "config"
         }
     ]
 }
