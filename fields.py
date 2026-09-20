@@ -296,6 +296,39 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "EP500P", "g_i_switch"): {"writeable": False},
     ("m", "EP500P", "b_soc_low"): {"writeable": False},
     ("m", "EP500P", "b_soc_high"): {"writeable": False},
+
+    # FP (BLUETTI FridgePower - the profile carries the device's own type
+    # string at 50200, as AC200L and EP500P do; the cloud calls the model
+    # "FP" too): read on a real US unit by @MadPB (#38, 2026-09-20), which
+    # answered the *whole* Balco 260 profile - 15 block reads, no timeout,
+    # every value plausible and the energy totals, SOC, thresholds and
+    # time-to-empty matching the app - so it is a Balco-family device on
+    # the Modbus side: Balco 260's register set and decodes (three-part
+    # versions, unswapped type string, 0.1 Hz grid frequency, b_c's 30000
+    # offset). Differences seen on that unit: b_v/b_v_total are 0.01 V
+    # (raw 2007 = 20.07 V for a 6-cell pack; 0.1 gave 200.7), the per-phase
+    # grid power is signed (65439 = -97 W, matching g_i_p_total -97 W), the
+    # "(Single)" local fields are populated (read as single registers, as
+    # on AC200L; g_i_p_local signed), and dc_o_switch (57005) is served.
+    # Nothing writeable yet: no write has been tested on this device - the
+    # Balco 260's writeable flags on the switches and thresholds are
+    # dropped here until one has. The twelve registers the Balco 260 never
+    # fills are left out until a full-set read says which ones the FP serves.
+    ("m", "FP", "b_v"): {"scale": 0.01},
+    ("m", "FP", "b_v_total"): {"scale": 0.01},
+    ("m", "FP", "g_1_i_p"): {"content": "int"},
+    ("m", "FP", "g_2_i_p"): {"content": "int"},
+    ("m", "FP", "g_3_i_p"): {"content": "int"},
+    ("m", "FP", "g_i_p_local"): {"content": "int16", "length": 1},
+    ("m", "FP", "ac_o_p_local"): {"content": "uint16", "length": 1},
+    ("m", "FP", "pv_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "FP", "pv_i_e_local"): {"content": "uint16", "length": 1},
+    ("m", "FP", "ac_o_switch"): {"writeable": False},
+    ("m", "FP", "dc_o_switch"): {"writeable": False},
+    ("m", "FP", "g_i_switch"): {"writeable": False},
+    ("m", "FP", "g_o_switch"): {"writeable": False},
+    ("m", "FP", "b_soc_low"): {"writeable": False},
+    ("m", "FP", "b_soc_high"): {"writeable": False},
 }
 
 
