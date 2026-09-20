@@ -2,7 +2,8 @@
     "$schema": "https://bluetti-community.github.io/bluetti-registers/device.json",
     "name": "FP",
     "contributors": [
-        "@MadPB"
+        "@MadPB",
+        "@m4skime"
     ],
     "fields": [
         {
