@@ -171,40 +171,102 @@
         {
             "name": "g_i_p_local",
             "address": 50215,
-            "content": "int16",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
-            "length": 1
+            "length": 2
         },
         {
             "name": "ac_o_p_local",
             "address": 50217,
-            "content": "uint16",
+            "content": "uint",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
-            "length": 1
+            "length": 2
         },
         {
             "name": "pv_i_p_local",
             "address": 50219,
-            "content": "uint16",
+            "content": "uint",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
-            "length": 1
+            "length": 2
         },
         {
-            "name": "pv_i_e_local",
-            "address": 50229,
-            "content": "uint16",
+            "name": "pv_ac_p_local",
+            "address": 50221,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "g_i_e_local",
+            "address": 50223,
+            "content": "uint",
             "unit": "kWh",
             "scale": 0.1,
             "category": "diagnostic",
             "state_class": "total_increasing",
             "device_class": "energy",
-            "length": 1
+            "length": 2
+        },
+        {
+            "name": "g_o_e_local",
+            "address": 50225,
+            "content": "uint",
+            "unit": "kWh",
+            "scale": 0.1,
+            "category": "diagnostic",
+            "state_class": "total_increasing",
+            "device_class": "energy",
+            "length": 2
+        },
+        {
+            "name": "ac_o_e_local",
+            "address": 50227,
+            "content": "uint",
+            "unit": "kWh",
+            "scale": 0.1,
+            "category": "diagnostic",
+            "state_class": "total_increasing",
+            "device_class": "energy",
+            "length": 2
+        },
+        {
+            "name": "pv_i_e_local",
+            "address": 50229,
+            "content": "uint",
+            "unit": "kWh",
+            "scale": 0.1,
+            "category": "diagnostic",
+            "state_class": "total_increasing",
+            "device_class": "energy",
+            "length": 2
+        },
+        {
+            "name": "pv_ac_e_local",
+            "address": 50231,
+            "content": "uint",
+            "unit": "kWh",
+            "scale": 0.1,
+            "category": "diagnostic",
+            "state_class": "total_increasing",
+            "device_class": "energy",
+            "length": 2
+        },
+        {
+            "name": "d_self_consumption",
+            "address": 50233,
+            "content": "uint",
+            "unit": "%",
+            "num_min": 0,
+            "num_max": 100,
+            "state_class": "measurement"
         },
         {
             "name": "d_phase_count",
@@ -782,6 +844,14 @@
             "state_class": "measurement"
         },
         {
+            "name": "b_t_avg",
+            "address": 51224,
+            "content": "int",
+            "unit": "\u00b0C",
+            "state_class": "measurement",
+            "device_class": "temperature"
+        },
+        {
             "name": "b_cell_count",
             "address": 51234,
             "content": "uint",
@@ -837,6 +907,20 @@
             "content": "uint",
             "category": "diagnostic",
             "length": 2
+        },
+        {
+            "name": "b_time_to_full",
+            "address": 51248,
+            "content": "uint",
+            "unit": "min",
+            "category": "diagnostic"
+        },
+        {
+            "name": "b_time_to_empty",
+            "address": 51249,
+            "content": "uint",
+            "unit": "min",
+            "category": "diagnostic"
         },
         {
             "name": "d_iot_model",
