@@ -243,6 +243,24 @@
             "name": "g_i_switch",
             "address": 57009,
             "content": "bool"
+        },
+        {
+            "name": "b_soc_low",
+            "address": 57016,
+            "content": "uint",
+            "unit": "%",
+            "num_min": 0,
+            "num_max": 100,
+            "category": "config"
+        },
+        {
+            "name": "b_soc_high",
+            "address": 57017,
+            "content": "uint",
+            "unit": "%",
+            "num_min": 0,
+            "num_max": 100,
+            "category": "config"
         }
     ]
 }
