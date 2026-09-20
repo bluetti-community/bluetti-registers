@@ -234,6 +234,14 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC500", "pv_i_p_total"): {"content": "uint16", "length": 1},
     ("m", "AC500", "g_i_p_total"): {"content": "int16", "length": 1},
     ("m", "AC500", "g_i_switch"): {"writeable": False},
+    # b_soc_low/b_soc_high (57016/57017): the lower/upper SOC limits of the
+    # app's "Customized UPS" mode, read 30/80 on a real AC500 (#13,
+    # 2026-09-20, @ItsMe00007) - below the lower one the unit goes to AC
+    # passthrough to keep a reserve, at the upper one it stops charging
+    # from the grid and leaves the rest to PV. Read-only: no write tested
+    # on an AC500, and an AC200L2 and an EP500Pro refuse writes there.
+    ("m", "AC500", "b_soc_low"): {"writeable": False},
+    ("m", "AC500", "b_soc_high"): {"writeable": False},
     # AC200L (profile name = the device's own d_inverter_type string; confirmed
     # on an AC200L2 only, 2026-09-17, bluetti-community/bluetti-modbus#76 by
     # @awrede): every value cross-checked live against the same unit's BLE
