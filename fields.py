@@ -183,7 +183,7 @@ MULTI_REGISTER_FIELD_LENGTHS: dict[str, int] = {
 #   unlike Balco260/EP2000's confirmed 3-part "major*10000 + minor*100 +
 #   patch" for the same field names (dotted_version()'s own "version"
 #   content type) - verified against independent samples matching the
-#   Bluetti app's reported ARM/DSP versions exactly.
+#   BLUETTI app's reported ARM/DSP versions exactly.
 # - g_i_f: grid frequency scales by 0.01 on AC500, not Balco260's 0.1 (the
 #   generic "_f" suffix rule's default) - a real AC500 reading of 5003
 #   decoded to 500.3 Hz (physically impossible) with the Balco260 scale;

@@ -4,7 +4,7 @@ This repository is the source of truth for every register definition used across
 bluetti-community projects (`bluetti-modbus` generates its device classes from here;
 `hassio-bluetti-modbus` vendors that in turn). There is no static per-model datasheet baked in
 anywhere downstream - every field here was confirmed by someone comparing a real device's raw
-Modbus/Bluetooth values against BLUETTI's own documentation and/or the Bluetti app. A fix here
+Modbus/Bluetooth values against BLUETTI's own documentation and/or the BLUETTI app. A fix here
 propagates to every project that consumes it.
 
 **Not a developer, or don't know Python?** The hardest part of contributing here is almost never

@@ -1,6 +1,6 @@
 # bluetti-registers
 
-Register maps for Bluetti power stations, covering both the Bluetooth app
+Register maps for BLUETTI power stations, covering both the Bluetooth app
 protocol (`bluetooth/`) and Modbus TCP (`modbus-tcp/`). One JSON file per
 device, plus a combined JSON per protocol attached to every release.
 
