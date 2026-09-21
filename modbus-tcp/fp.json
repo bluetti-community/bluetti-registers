@@ -3,7 +3,8 @@
     "name": "FP",
     "contributors": [
         "@MadPB",
-        "@m4skime"
+        "@m4skime",
+        "@jumperalex"
     ],
     "fields": [
         {
@@ -950,12 +951,14 @@
         {
             "name": "dc_o_switch",
             "address": 57005,
-            "content": "bool"
+            "content": "bool",
+            "writeable": true
         },
         {
             "name": "g_i_switch",
             "address": 57009,
-            "content": "bool"
+            "content": "bool",
+            "writeable": true
         },
         {
             "name": "g_o_switch",
