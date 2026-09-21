@@ -322,17 +322,18 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # pack; 0.1 gave 200.7), and the per-phase grid power is signed
     # (65439 = -97 W importing, matching g_i_p_total -97 W; 64719 = -817 W
     # while charging from the grid). dc_o_switch (57005) is served, unlike
-    # the Balco. Nothing writeable yet: no write has been tested on this
-    # device - the Balco's writeable flags on the switches and thresholds
-    # are dropped here until one has.
+    # the Balco. Writes, tested on a third unit (#38, 2026-09-21): the DC
+    # output switch (57005) and the grid charging switch (57009) accept a
+    # write and confirm it at the Balco family's internal addresses (2012,
+    # 2207); the SOC thresholds refuse one ("illegal data address"), so
+    # they stay read-only; the AC output switch (57001, powering the
+    # fridge) and the grid feed-in switch (57010) have not been tried.
     ("m", "FP", "b_v"): {"scale": 0.01},
     ("m", "FP", "b_v_total"): {"scale": 0.01},
     ("m", "FP", "g_1_i_p"): {"content": "int"},
     ("m", "FP", "g_2_i_p"): {"content": "int"},
     ("m", "FP", "g_3_i_p"): {"content": "int"},
     ("m", "FP", "ac_o_switch"): {"writeable": False},
-    ("m", "FP", "dc_o_switch"): {"writeable": False},
-    ("m", "FP", "g_i_switch"): {"writeable": False},
     ("m", "FP", "g_o_switch"): {"writeable": False},
     ("m", "FP", "b_soc_low"): {"writeable": False},
     ("m", "FP", "b_soc_high"): {"writeable": False},
