@@ -206,7 +206,7 @@
             "address": 51003,
             "content": "uint",
             "unit": "A",
-            "scale": 0.01,
+            "scale": 0.1,
             "state_class": "measurement",
             "device_class": "current"
         },

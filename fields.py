@@ -250,8 +250,14 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # from AC500 at the same addresses:
     # - b_v_total: raw 5409 is 54.09 V (a single ~51.2 V-nominal pack near
     #   full), not AC500's 540.9 V - scale 0.01.
-    # - b_c_total: same block, assumed to share the encoding - 0.01, NOT
-    #   independently confirmed (the pack was idle at 100 % during testing).
+    # - b_c_total: NOT the same - 0.1, the same as every other device at
+    #   that address. Read on a second AC200L while its Transfer Hub
+    #   charged it at 810 W from the grid: raw 144 next to b_v_total's
+    #   52.68 V is 14.4 A, i.e. 759 W into the pack, 94 % of what the grid
+    #   was delivering. At 0.01 it would be 1.44 A - 76 W - with the other
+    #   734 W going nowhere. The 0.01 here was carried over from
+    #   b_v_total's block while no unit had ever been seen with current
+    #   flowing (#31).
     # g_i_f is deliberately absent: raw 599 was 59.9 Hz against BLE's 59.90,
     # i.e. the generic "_f" default of 0.1 - AC500's 0.01 is the exception.
     # b_soc_low/b_soc_high read 20/80 matching BLE's soc_low/soc_high but
@@ -279,7 +285,7 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # charging an AC200MAX (bluetti-registers#29), and matching the single
     # register reads from the same hubs earlier the same day (5090, 5199).
     ("m", "Balcotrans", "b_v_total"): {"scale": 0.01},
-    ("m", "AC200L", "b_c_total"): {"scale": 0.01},
+    ("m", "AC200L", "b_c_total"): {"scale": 0.1},
     ("m", "AC200L", "b_soc_low"): {"writeable": False},
     ("m", "AC200L", "b_soc_high"): {"writeable": False},
     # EP500P (BLUETTI EP500Pro - the profile carries the device's own type
