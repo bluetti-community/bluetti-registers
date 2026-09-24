@@ -4,7 +4,7 @@ Register maps for BLUETTI power stations, covering both the Bluetooth app
 protocol (`bluetooth/`) and Modbus TCP (`modbus-tcp/`). One JSON file per
 device, plus a combined JSON per protocol attached to every release.
 
-Currently: 27 devices over Bluetooth, 5 over Modbus TCP.
+Currently: 27 devices over Bluetooth, 8 over Modbus TCP.
 
 Want to add or fix a register, including from real hardware you own? See
 [CONTRIBUTING.md](CONTRIBUTING.md) — no coding experience required to help.
@@ -26,20 +26,32 @@ and the copyright notice is unchanged — see [LICENSE](LICENSE).
 > **Note on version tags.** `0.0.20` is the last tag shared with upstream.
 > Later `0.0.x` tags exist in both repositories with different content, so pin
 > releases by repository URL, not by version number alone.
+>
+> The generated files differ too: upstream builds a single `devices.json`,
+> this repository builds one file per protocol, in a different shape. They are
+> not interchangeable.
 
 ## Consuming the data
 
-Download the JSON from a [release](../../releases) — either a single device
-file, or the combined `bluetooth.json` / `modbus-tcp.json` attached to the
-release. Don't fetch from `main`; it can be mid-change.
+Every [release](../../releases) carries two files, `bluetooth.json` and
+`modbus-tcp.json`, each holding every device of that protocol. Fetch one by
+tag, never from `main`, which can be mid-change:
 
-The JSON Schemas describing the shape of these files live in `schemas/` and are
-published as a browsable site via GitHub Pages.
+```
+https://github.com/bluetti-community/bluetti-registers/releases/download/<tag>/modbus-tcp.json
+```
+
+The per-device files are not on the release; they live in the tree, and are
+pinned the same way. The Python library
+[bluetti-modbus](https://github.com/bluetti-community/bluetti-modbus) is the
+largest consumer of the Modbus TCP data and imports it exactly as above.
+
+The GitHub Pages site publishes the **JSON Schemas** from `schemas/`, not the
+register data. Every device file names one in its `$schema` key, which is what
+`validate.py` and an editor's live validation resolve.
 
 `examples/` contains a short worked example of importing a generated file from
-another project (currently Node.js/TypeScript). The Python library
-[bluetti-modbus](https://github.com/bluetti-community/bluetti-modbus) is a
-larger real-world consumer of the Modbus TCP data.
+another project (currently Node.js/TypeScript).
 
 ## Naming convention for field names
 
@@ -64,6 +76,9 @@ larger real-world consumer of the Modbus TCP data.
   from another project.
 - `fields.py` — the shared field catalogue: name, type, unit, scale and
   metadata for every field the CSVs can reference.
+- `generate-from-csv.py`, `generate.py`, `validate.py`, `helpers.py` — the
+  pipeline: per-device files, the combined per-protocol files, validation, and
+  the shared paths and schema URL.
 
 ## Workflow
 
