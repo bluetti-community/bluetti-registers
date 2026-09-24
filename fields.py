@@ -273,6 +273,12 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC200L", "pv_i_e_local"): {"content": "uint16", "length": 1},
     ("m", "AC200L", "d_inverter_type"): {"content": "string_swapped"},
     ("m", "AC200L", "b_v_total"): {"scale": 0.01},
+    # Balcotrans (the Balco Transfer Hub) reports the connected power
+    # station's battery voltage, and reports it the way the AC200L does:
+    # raw 5350 is 53.50 V, not 535.0. Caught in Home Assistant on a hub
+    # charging an AC200MAX (bluetti-registers#29), and matching the single
+    # register reads from the same hubs earlier the same day (5090, 5199).
+    ("m", "Balcotrans", "b_v_total"): {"scale": 0.01},
     ("m", "AC200L", "b_c_total"): {"scale": 0.01},
     ("m", "AC200L", "b_soc_low"): {"writeable": False},
     ("m", "AC200L", "b_soc_high"): {"writeable": False},
