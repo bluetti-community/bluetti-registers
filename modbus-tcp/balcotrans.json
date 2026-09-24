@@ -206,7 +206,7 @@
             "unit": "V",
             "state_class": "measurement",
             "device_class": "voltage",
-            "scale": 0.1
+            "scale": 0.01
         },
         {
             "name": "b_soc_total",
