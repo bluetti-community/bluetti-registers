@@ -1,0 +1,222 @@
+{
+    "$schema": "https://bluetti-community.github.io/bluetti-registers/device.json",
+    "name": "Balcotrans",
+    "contributors": [
+        "@Grafei67",
+        "@pbouchand"
+    ],
+    "fields": [
+        {
+            "name": "d_num_inverters",
+            "address": 50001,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "ac_o_p_total",
+            "address": 50002,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "pv_i_p_total",
+            "address": 50004,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_inverter_total",
+            "address": 50008,
+            "content": "int",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 2
+        },
+        {
+            "name": "d_inverter_status",
+            "address": 50022,
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "inverter_status"
+        },
+        {
+            "name": "d_inverter_warning",
+            "address": 50023,
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "inverter_warning",
+            "length": 4
+        },
+        {
+            "name": "d_inverter_fault",
+            "address": 50027,
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "inverter_fault",
+            "length": 5
+        },
+        {
+            "name": "d_inverter_type",
+            "address": 50200,
+            "content": "string",
+            "length": 6,
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_serial",
+            "address": 50206,
+            "content": "serial",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_ver_arm",
+            "address": 50210,
+            "content": "version",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_ver_dsp",
+            "address": 50212,
+            "content": "version",
+            "category": "diagnostic"
+        },
+        {
+            "name": "g_i_f",
+            "address": 50214,
+            "content": "uint",
+            "unit": "Hz",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "frequency"
+        },
+        {
+            "name": "d_phase_count",
+            "address": 50234,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "g_1_i_p",
+            "address": 50235,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "g_1_i_v",
+            "address": 50236,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "g_1_i_c",
+            "address": 50237,
+            "content": "int",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "ac_phase_count",
+            "address": 50244,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "ac_1_o_p",
+            "address": 50245,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "ac_1_o_v",
+            "address": 50246,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "ac_1_o_c",
+            "address": 50247,
+            "content": "uint",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "d_inverter_phase_count",
+            "address": 50254,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_inverter_1_status",
+            "address": 50255,
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "inverter_status"
+        },
+        {
+            "name": "d_inverter_1_p",
+            "address": 50256,
+            "content": "int",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "d_inverter_1_v",
+            "address": 50257,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "d_inverter_1_c",
+            "address": 50258,
+            "content": "uint",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "b_v_total",
+            "address": 51002,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "b_soc_total",
+            "address": 51004,
+            "content": "uint",
+            "unit": "%",
+            "num_min": 0,
+            "num_max": 100,
+            "state_class": "measurement",
+            "device_class": "battery"
+        }
+    ]
+}
