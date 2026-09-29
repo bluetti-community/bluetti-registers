@@ -349,6 +349,47 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "FP", "g_o_switch"): {"writeable": False},
     ("m", "FP", "b_soc_low"): {"writeable": False},
     ("m", "FP", "b_soc_high"): {"writeable": False},
+
+    # PA030 (BLUETTI Apex 300 - the profile carries the device's own type
+    # string at 50200, as AC200L, EP500P and FP do): AC500's register set
+    # answered in full on a real unit, 31 isolated block reads without an
+    # error, values matching the app (#49). AC500's overrides apply here for
+    # the same reason they apply to EP500P - single-register power totals,
+    # 2-part ARM/DSP versions, swapped type string, populated "(Single)"
+    # fields - with two scales of its own:
+    # - b_v_total is 0.01. Raw 5339, then 5312 on the same unit once a 29 W
+    #   load came on: 53.39 V sagging to 53.12 V, which is what the manual's
+    #   51.2 V / 2,764.8 Wh 16S LFP pack does. At AC500's 0.1 the same two
+    #   readings would be a 533 V stack inside a 38 kg box.
+    # - b_c_total keeps the generic 0.1, proven by an inequality rather than
+    #   carried over: 2.5 A at 53.12 V is 133 W leaving the pack against the
+    #   29 W measured at the socket with the DC hub on, while 0.01 would give
+    #   13 W - less than the unit was delivering.
+    # Unlike its AC500 cousins this model populates the PV metadata (two DC
+    # strings declared, both typed DcPv) and the energy counters.
+    # Unconfirmed, carried over from AC500: g_i_f's 0.01, read as raw 0 on a
+    # unit that was off-grid - a read on the mains settles it.
+    # Every switch and threshold stays read-only: no write of any kind has
+    # been tried on an Apex 300, and on the AC family the SOC thresholds
+    # refuse one outright. The same treatment FP had until a write was tested
+    # on real hardware.
+    ("m", "PA030", "ac_o_p_total"): {"content": "uint16", "length": 1},
+    ("m", "PA030", "pv_i_p_total"): {"content": "uint16", "length": 1},
+    ("m", "PA030", "g_i_p_total"): {"content": "int16", "length": 1},
+    ("m", "PA030", "d_ver_arm"): {"content": "version2"},
+    ("m", "PA030", "d_ver_dsp"): {"content": "version2"},
+    ("m", "PA030", "g_i_f"): {"scale": 0.01},
+    ("m", "PA030", "g_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "PA030", "ac_o_p_local"): {"content": "uint16", "length": 1},
+    ("m", "PA030", "pv_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "PA030", "pv_i_e_local"): {"content": "uint16", "length": 1},
+    ("m", "PA030", "d_inverter_type"): {"content": "string_swapped"},
+    ("m", "PA030", "b_v_total"): {"scale": 0.01},
+    ("m", "PA030", "ac_o_switch"): {"writeable": False},
+    ("m", "PA030", "dc_o_switch"): {"writeable": False},
+    ("m", "PA030", "g_i_switch"): {"writeable": False},
+    ("m", "PA030", "b_soc_low"): {"writeable": False},
+    ("m", "PA030", "b_soc_high"): {"writeable": False},
 }
 
 
