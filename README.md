@@ -6,6 +6,9 @@ device, plus a combined JSON per protocol attached to every release.
 
 Currently: 27 devices over Bluetooth, 8 over Modbus TCP.
 
+Wondering whether your unit can answer at all? See [Which firmware serves
+Modbus TCP](#which-firmware-serves-modbus-tcp).
+
 Want to add or fix a register, including from real hardware you own? See
 [CONTRIBUTING.md](CONTRIBUTING.md) — no coding experience required to help.
 
@@ -97,6 +100,51 @@ to run it by hand; CI does it on tag.
 > **Exception:** `modbus-tcp/smeter.json` is maintained by hand and has no row
 > in `modbus-tcp.csv`. Edit that file directly and don't regenerate it from the
 > CSV, or it will be lost.
+
+## Which firmware serves Modbus TCP
+
+Modbus TCP is not a property of a model, it is a property of a build: on every
+device where it has appeared, it arrived with an IoT firmware update and not
+with a setting anyone could switch on beforehand. What follows is every data
+point the issues below carry, so an owner can tell whether a unit is waiting on
+a build or already able to answer.
+
+| Device | Seen *without* it | Seen serving it | Evidence |
+|---|---|---|---|
+| Balco 260 / Balco 500 | - | `IOT:500120117` | BLUETTI's own [Device list sheet][spec] |
+| S Meter | - | not recorded | [#13](https://github.com/bluetti-community/bluetti-registers/issues/13) |
+| AC500 | 9041.10 | **9041.17** | [bluetti-official#5](https://github.com/bluetti-official/bluetti-modbus-tcp-slave/issues/5) |
+| AC200L | - | **9041.15** | [#31](https://github.com/bluetti-community/bluetti-registers/issues/31) |
+| EP500Pro | - | **9041.17** | [#35](https://github.com/bluetti-community/bluetti-registers/issues/35) |
+| Apex 300 | 8026.13 | **8026.14** | [#49](https://github.com/bluetti-community/bluetti-registers/issues/49) |
+| EP2000 (EBOX) | 9052.31 | **9052.66** | [#42](https://github.com/bluetti-community/bluetti-registers/issues/42) |
+| FridgePower | - | **10010.01.12** | [#38](https://github.com/bluetti-community/bluetti-registers/issues/38) |
+| Balco Transfer Hub | - | **30052.01.17** | [#29](https://github.com/bluetti-community/bluetti-registers/issues/29) |
+| AC300 | 9014.12 | none yet | [#47](https://github.com/bluetti-community/bluetti-registers/issues/47) |
+
+**Version numbers only compare within a product line.** Each family numbers its
+IoT firmware its own way - `9041.x`, `8026.x`, `9014.x`, `9052.x`,
+`10010.01.x`, `30052.01.17` - so a higher number on another model means
+nothing. Compare a unit only against its own row.
+
+**What "serving it" means differs slightly by model.** On most, the build adds
+a **Modbus TCP** entry to the local web page's Settings, which the owner then
+enables. On the Balco Transfer Hub that entry exists but ships switched off. On
+an EBOX at 9052.66 there is no entry at all: the port is simply served. And on
+the Apex 300 the page itself lives on the unit's own Wi-Fi access point, which
+the same build switches on.
+
+**The open question is the AC300.** Two units on 9014.12 have no web page worth
+reaching and are offered no update, while other AC300s have been reported on
+9041.10 and 9041.17 - the line and build that carry the page on the AC500 and
+the EP500Pro. Nobody has checked whether those units serve it. If you have an
+AC300 on a `9041.x` build, that single check settles the model.
+
+To read your own: the BLUETTI app, **My Devices** -> the three dots on the
+device -> **Upgrade**, which lists IoT, ARM, DSP and BMS. Where a local web
+page exists it lists its own versions too, per component.
+
+[spec]: https://github.com/bluetti-official/bluetti-modbus-tcp-slave/blob/main/doc/Bluetti-Open-Modbus-TCP-register-list.xlsx
 
 ## Where the data comes from
 
