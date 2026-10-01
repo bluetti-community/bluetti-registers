@@ -111,7 +111,7 @@ a build or already able to answer.
 
 | Device | Seen *without* it | Seen serving it | Evidence |
 |---|---|---|---|
-| Balco 260 / Balco 500 | - | `IOT:500120117` | BLUETTI's own [Device list sheet][spec] |
+| Balco 260 / Balco 500 | - | **500120117** | BLUETTI's own [Device list sheet][spec] |
 | S Meter | - | not recorded | [#13](https://github.com/bluetti-community/bluetti-registers/issues/13) |
 | AC500 | 9041.10 | **9041.17** | [bluetti-official#5](https://github.com/bluetti-official/bluetti-modbus-tcp-slave/issues/5) |
 | AC200L | - | **9041.15** | [#31](https://github.com/bluetti-community/bluetti-registers/issues/31) |
