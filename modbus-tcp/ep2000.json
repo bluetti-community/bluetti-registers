@@ -2,7 +2,8 @@
     "$schema": "https://bluetti-community.github.io/bluetti-registers/device.json",
     "name": "EP2000",
     "contributors": [
-        "@bluetti-official"
+        "@bluetti-official",
+        "@raunchyray"
     ],
     "fields": [
         {
@@ -250,13 +251,13 @@
         {
             "name": "d_ver_arm",
             "address": 50210,
-            "content": "version",
+            "content": "version2",
             "category": "diagnostic"
         },
         {
             "name": "d_ver_dsp",
             "address": 50212,
-            "content": "version",
+            "content": "version2",
             "category": "diagnostic"
         },
         {
@@ -377,7 +378,7 @@
         {
             "name": "g_1_i_p",
             "address": 50235,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
@@ -403,7 +404,7 @@
         {
             "name": "g_2_i_p",
             "address": 50238,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
@@ -429,7 +430,7 @@
         {
             "name": "g_3_i_p",
             "address": 50241,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
@@ -788,7 +789,7 @@
         {
             "name": "g_1_p_active",
             "address": 50288,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -797,7 +798,7 @@
         {
             "name": "g_2_p_active",
             "address": 50290,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -806,7 +807,7 @@
         {
             "name": "g_3_p_active",
             "address": 50292,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -815,7 +816,7 @@
         {
             "name": "g_1_p_reactive",
             "address": 50294,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -824,7 +825,7 @@
         {
             "name": "g_2_p_reactive",
             "address": 50296,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -833,7 +834,7 @@
         {
             "name": "g_3_p_reactive",
             "address": 50298,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -842,7 +843,7 @@
         {
             "name": "g_1_p_apparent",
             "address": 50300,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -851,7 +852,7 @@
         {
             "name": "g_2_p_apparent",
             "address": 50302,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -860,7 +861,7 @@
         {
             "name": "g_3_p_apparent",
             "address": 50304,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -869,7 +870,7 @@
         {
             "name": "d_inverter_1_p_active_internal",
             "address": 50306,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -878,7 +879,7 @@
         {
             "name": "d_inverter_2_p_active_internal",
             "address": 50308,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -887,7 +888,7 @@
         {
             "name": "d_inverter_3_p_active_internal",
             "address": 50310,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1049,28 +1050,28 @@
         {
             "name": "b_ver_1",
             "address": 51211,
-            "content": "version",
+            "content": "version2",
             "category": "diagnostic",
             "length": 2
         },
         {
             "name": "b_ver_2",
             "address": 51213,
-            "content": "version",
+            "content": "version2",
             "category": "diagnostic",
             "length": 2
         },
         {
             "name": "b_ver_3",
             "address": 51215,
-            "content": "version",
+            "content": "version2",
             "category": "diagnostic",
             "length": 2
         },
         {
             "name": "b_ver_4",
             "address": 51217,
-            "content": "version",
+            "content": "version2",
             "category": "diagnostic",
             "length": 2
         },
@@ -1214,7 +1215,7 @@
         {
             "name": "d_iot_ver",
             "address": 53011,
-            "content": "version",
+            "content": "version2",
             "category": "diagnostic"
         },
         {
@@ -1265,7 +1266,7 @@
         {
             "name": "d_p_active_target_l1",
             "address": 57032,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1274,7 +1275,7 @@
         {
             "name": "d_p_active_target_l2",
             "address": 57034,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1283,7 +1284,7 @@
         {
             "name": "d_p_active_target_l3",
             "address": 57036,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1292,7 +1293,7 @@
         {
             "name": "d_p_reactive_target_l1",
             "address": 57038,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1301,7 +1302,7 @@
         {
             "name": "d_p_reactive_target_l2",
             "address": 57040,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1310,7 +1311,7 @@
         {
             "name": "d_p_reactive_target_l3",
             "address": 57042,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1319,7 +1320,7 @@
         {
             "name": "d_p_apparent_target_l1",
             "address": 57044,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1328,7 +1329,7 @@
         {
             "name": "d_p_apparent_target_l2",
             "address": 57046,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1337,7 +1338,7 @@
         {
             "name": "d_p_apparent_target_l3",
             "address": 57048,
-            "content": "uint",
+            "content": "int",
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power",
@@ -1346,8 +1347,8 @@
         {
             "name": "d_p_output_level_pct",
             "address": 57050,
-            "content": "uint",
-            "unit": "W",
+            "content": "int",
+            "unit": "%",
             "state_class": "measurement",
             "device_class": "power"
         },
@@ -1355,7 +1356,7 @@
             "name": "d_p_limit_timeout",
             "address": 57051,
             "content": "uint",
-            "unit": "W",
+            "unit": "s",
             "state_class": "measurement",
             "device_class": "power"
         },
@@ -1363,7 +1364,7 @@
             "name": "d_p_limit_ramp_time",
             "address": 57052,
             "content": "uint",
-            "unit": "W",
+            "unit": "s",
             "state_class": "measurement",
             "device_class": "power"
         },
@@ -1371,7 +1372,7 @@
             "name": "d_p_limit_ramp_rate_pct",
             "address": 57053,
             "content": "uint",
-            "unit": "W",
+            "unit": "%",
             "state_class": "measurement",
             "device_class": "power"
         },

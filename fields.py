@@ -350,6 +350,58 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "FP", "b_soc_low"): {"writeable": False},
     ("m", "FP", "b_soc_high"): {"writeable": False},
 
+    # EP2000 (the EMS box answers as EBOX) - BLUETTI's own EBOX sheet, now read
+    # on a real unit with Modbus TCP opened by the app's VPP option (#42):
+    # 15 blocks, no error, b_p equal to b_c_total x b_v to the watt. What that
+    # first read corrected:
+    # - Power that can flow either way is signed. The sheet says so itself for
+    #   the per-phase grid power ("int for a device with a power feeding
+    #   function") and gives the inverter-port and target blocks as int32. On
+    #   the unit they read 65536 - x: the three phases came back as 59011 /
+    #   58865 / 61015 W while grid-charging, i.e. -6525 / -6671 / -4521, which
+    #   add up to -17717, the very g_i_p_local; the internal-port powers equal
+    #   d_inverter_N_p once signed; the active target read -6666.
+    # - The versions are two-part, as the unit's web page prints them (V905231,
+    #   V503222): 9052.31, 5032.22, not 90.52.31.
+    # - The power-limit block's units, per the sheet: seconds for the timeout
+    #   and ramp time, percent for the output level (signed, -100..100) and
+    #   the ramp rate.
+    ("m", "EP2000", "g_1_i_p"): {"content": "int"},
+    ("m", "EP2000", "g_2_i_p"): {"content": "int"},
+    ("m", "EP2000", "g_3_i_p"): {"content": "int"},
+    ("m", "EP2000", "g_1_p_active"): {"content": "int"},
+    ("m", "EP2000", "g_2_p_active"): {"content": "int"},
+    ("m", "EP2000", "g_3_p_active"): {"content": "int"},
+    ("m", "EP2000", "g_1_p_reactive"): {"content": "int"},
+    ("m", "EP2000", "g_2_p_reactive"): {"content": "int"},
+    ("m", "EP2000", "g_3_p_reactive"): {"content": "int"},
+    ("m", "EP2000", "g_1_p_apparent"): {"content": "int"},
+    ("m", "EP2000", "g_2_p_apparent"): {"content": "int"},
+    ("m", "EP2000", "g_3_p_apparent"): {"content": "int"},
+    ("m", "EP2000", "d_inverter_1_p_active_internal"): {"content": "int"},
+    ("m", "EP2000", "d_inverter_2_p_active_internal"): {"content": "int"},
+    ("m", "EP2000", "d_inverter_3_p_active_internal"): {"content": "int"},
+    ("m", "EP2000", "d_p_active_target_l1"): {"content": "int"},
+    ("m", "EP2000", "d_p_active_target_l2"): {"content": "int"},
+    ("m", "EP2000", "d_p_active_target_l3"): {"content": "int"},
+    ("m", "EP2000", "d_p_reactive_target_l1"): {"content": "int"},
+    ("m", "EP2000", "d_p_reactive_target_l2"): {"content": "int"},
+    ("m", "EP2000", "d_p_reactive_target_l3"): {"content": "int"},
+    ("m", "EP2000", "d_p_apparent_target_l1"): {"content": "int"},
+    ("m", "EP2000", "d_p_apparent_target_l2"): {"content": "int"},
+    ("m", "EP2000", "d_p_apparent_target_l3"): {"content": "int"},
+    ("m", "EP2000", "d_iot_ver"): {"content": "version2"},
+    ("m", "EP2000", "d_ver_arm"): {"content": "version2"},
+    ("m", "EP2000", "d_ver_dsp"): {"content": "version2"},
+    ("m", "EP2000", "b_ver_1"): {"content": "version2"},
+    ("m", "EP2000", "b_ver_2"): {"content": "version2"},
+    ("m", "EP2000", "b_ver_3"): {"content": "version2"},
+    ("m", "EP2000", "b_ver_4"): {"content": "version2"},
+    ("m", "EP2000", "d_p_limit_timeout"): {"unit": "s"},
+    ("m", "EP2000", "d_p_limit_ramp_time"): {"unit": "s"},
+    ("m", "EP2000", "d_p_limit_ramp_rate_pct"): {"unit": "%"},
+    ("m", "EP2000", "d_p_output_level_pct"): {"content": "int", "unit": "%"},
+
     # PA030 (BLUETTI Apex 300 - the profile carries the device's own type
     # string at 50200, as AC200L, EP500P and FP do): AC500's register set
     # answered in full on a real unit, 31 isolated block reads without an
