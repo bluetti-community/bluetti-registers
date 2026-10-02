@@ -117,7 +117,7 @@ a build or already able to answer.
 | AC200L | - | **9041.15** | [#31](https://github.com/bluetti-community/bluetti-registers/issues/31) |
 | EP500Pro | - | **9041.17** | [#35](https://github.com/bluetti-community/bluetti-registers/issues/35) |
 | Apex 300 | 8026.13 | **8026.14** | [#49](https://github.com/bluetti-community/bluetti-registers/issues/49) |
-| EP2000 (EBOX) | 9052.31 | **9052.66** | [#42](https://github.com/bluetti-community/bluetti-registers/issues/42) |
+| EP2000 (EBOX) | - | **9052.31**, with VPP enabled in the app | [#42](https://github.com/bluetti-community/bluetti-registers/issues/42) |
 | FridgePower | - | **10010.01.12** | [#38](https://github.com/bluetti-community/bluetti-registers/issues/38) |
 | Balco Transfer Hub | - | **30052.01.17** | [#29](https://github.com/bluetti-community/bluetti-registers/issues/29) |
 | AC300 | 9014.12 | none yet | [#47](https://github.com/bluetti-community/bluetti-registers/issues/47) |
@@ -130,9 +130,15 @@ nothing. Compare a unit only against its own row.
 **What "serving it" means differs slightly by model.** On most, the build adds
 a **Modbus TCP** entry to the local web page's Settings, which the owner then
 enables. On the Balco Transfer Hub that entry exists but ships switched off. On
-an EBOX at 9052.66 there is no entry at all: the port is simply served. And on
 the Apex 300 the page itself lives on the unit's own Wi-Fi access point, which
 the same build switches on.
+
+**On an EP2000 the switch is not on the web page at all: it is VPP.** Enabling
+the virtual power plant option in the BLUETTI app opens port 502, on a build
+whose web page shows no Modbus entry - this is how the documentation of a VPP
+gateway that works with BLUETTI batteries tells owners to enable Modbus TCP.
+Know what that option is before turning it on: a virtual power plant can let
+an aggregator charge and discharge the battery.
 
 **The open question is the AC300.** Two units on 9014.12 have no web page worth
 reaching and are offered no update, while other AC300s have been reported on
