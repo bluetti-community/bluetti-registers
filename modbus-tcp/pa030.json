@@ -278,7 +278,8 @@
         {
             "name": "ac_o_switch",
             "address": 57001,
-            "content": "bool"
+            "content": "bool",
+            "writeable": true
         },
         {
             "name": "dc_o_switch",

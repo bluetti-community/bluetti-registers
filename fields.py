@@ -426,11 +426,10 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # voltage and both PV currents at the Balco 260's addresses (39.2 V on
     # 50274 against 39.3 V in the app; 1.0 A on 50275 for 42 W).
     # g_i_f keeps the generic 0.1, unlike AC500's 0.01: raw 500 on the mains.
-    # The DC output switch takes a write: on a real unit 57005 went 1 -> 0 -> 1,
-    # read back each time, confirmed at internal address 2012 as on the Balco
-    # family. The AC output switch accepted a same-value write but has not
-    # been toggled yet, and on the AC family the SOC thresholds refuse a write
-    # outright, so the rest stays read-only.
+    # Both output switches take a write: on a real unit 57005 went 1 -> 0 -> 1
+    # and 57001 0 -> 1 -> 0, read back each time, confirmed at internal
+    # addresses 2012 and 2011 as on the Balco family. On the AC family the SOC
+    # thresholds refuse a write outright, so the rest stays read-only.
     # The PV and grid-charging energy totals (50014, 50016) are served, at the
     # Balco 260's addresses: 788.1 and 480.4 kWh on that unit.
     ("m", "PA030", "ac_o_p_total"): {"content": "uint16", "length": 1},
@@ -444,7 +443,6 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "PA030", "pv_i_e_local"): {"content": "uint16", "length": 1},
     ("m", "PA030", "d_inverter_type"): {"content": "string_swapped"},
     ("m", "PA030", "b_v_total"): {"scale": 0.01},
-    ("m", "PA030", "ac_o_switch"): {"writeable": False},
     ("m", "PA030", "g_i_switch"): {"writeable": False},
     ("m", "PA030", "b_soc_low"): {"writeable": False},
     ("m", "PA030", "b_soc_high"): {"writeable": False},
