@@ -44,6 +44,28 @@
             "length": 2
         },
         {
+            "name": "pv_i_e_total",
+            "address": 50014,
+            "content": "uint",
+            "unit": "kWh",
+            "scale": 0.1,
+            "category": "diagnostic",
+            "state_class": "total_increasing",
+            "device_class": "energy",
+            "length": 2
+        },
+        {
+            "name": "g_i_e_total",
+            "address": 50016,
+            "content": "uint",
+            "unit": "kWh",
+            "scale": 0.1,
+            "category": "diagnostic",
+            "state_class": "total_increasing",
+            "device_class": "energy",
+            "length": 2
+        },
+        {
             "name": "g_o_e_total",
             "address": 50018,
             "content": "uint",
@@ -261,7 +283,8 @@
         {
             "name": "dc_o_switch",
             "address": 57005,
-            "content": "bool"
+            "content": "bool",
+            "writeable": true
         },
         {
             "name": "g_i_switch",
