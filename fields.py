@@ -366,6 +366,10 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # - The power-limit block's units, per the sheet: seconds for the timeout
     #   and ramp time, percent for the output level (signed, -100..100) and
     #   the ramp rate.
+    # - The pack current (51220) is signed, positive while charging: raw 62
+    #   charging next to b_c_total 6.3 A, 65518 (-1.8 A) discharging next to
+    #   2.0 A. The sheet's "uint" with no offset fits the charging reads only.
+    ("m", "EP2000", "b_c"): {"content": "int"},
     ("m", "EP2000", "g_1_i_p"): {"content": "int"},
     ("m", "EP2000", "g_2_i_p"): {"content": "int"},
     ("m", "EP2000", "g_3_i_p"): {"content": "int"},
