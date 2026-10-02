@@ -99,7 +99,7 @@
             "address": 50214,
             "content": "uint",
             "unit": "Hz",
-            "scale": 0.01,
+            "scale": 0.1,
             "state_class": "measurement",
             "device_class": "frequency"
         },
@@ -178,6 +178,15 @@
             "scale": 0.1
         },
         {
+            "name": "pv_1_i_c",
+            "address": 50271,
+            "content": "uint",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
             "name": "pv_2_i_type",
             "address": 50272,
             "content": "enum",
@@ -191,6 +200,24 @@
             "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
+        },
+        {
+            "name": "pv_2_i_v",
+            "address": 50274,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "pv_2_i_c",
+            "address": 50275,
+            "content": "uint",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
         },
         {
             "name": "d_num_battery_packs",

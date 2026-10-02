@@ -418,9 +418,10 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     #   29 W measured at the socket with the DC hub on, while 0.01 would give
     #   13 W - less than the unit was delivering.
     # Unlike its AC500 cousins this model populates the PV metadata (two DC
-    # strings declared, both typed DcPv) and the energy counters.
-    # Unconfirmed, carried over from AC500: g_i_f's 0.01, read as raw 0 on a
-    # unit that was off-grid - a read on the mains settles it.
+    # strings declared, both typed DcPv), the energy counters, and the PV2
+    # voltage and both PV currents at the Balco 260's addresses (39.2 V on
+    # 50274 against 39.3 V in the app; 1.0 A on 50275 for 42 W).
+    # g_i_f keeps the generic 0.1, unlike AC500's 0.01: raw 500 on the mains.
     # Every switch and threshold stays read-only: no write of any kind has
     # been tried on an Apex 300, and on the AC family the SOC thresholds
     # refuse one outright. The same treatment FP had until a write was tested
@@ -430,7 +431,6 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "PA030", "g_i_p_total"): {"content": "int16", "length": 1},
     ("m", "PA030", "d_ver_arm"): {"content": "version2"},
     ("m", "PA030", "d_ver_dsp"): {"content": "version2"},
-    ("m", "PA030", "g_i_f"): {"scale": 0.01},
     ("m", "PA030", "g_i_p_local"): {"content": "uint16", "length": 1},
     ("m", "PA030", "ac_o_p_local"): {"content": "uint16", "length": 1},
     ("m", "PA030", "pv_i_p_local"): {"content": "uint16", "length": 1},
