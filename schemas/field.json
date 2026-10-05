@@ -30,6 +30,10 @@
             "type": "number",
             "title": "Scale for fields (multiplies with value)"
         },
+        "offset": {
+            "type": "number",
+            "title": "Offset for fields (added to the value after scale)"
+        },
         "num_min": {
             "type": "integer",
             "title": "Minimum for numeric fields"

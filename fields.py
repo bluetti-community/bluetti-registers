@@ -370,15 +370,17 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     #   charging next to b_c_total 6.3 A, 65518 (-1.8 A) discharging next to
     #   2.0 A. The sheet's "uint" with no offset fits the charging reads only.
     ("m", "EP2000", "b_c"): {"content": "int"},
-    # - The pack temperature (51224) is in Fahrenheit: it read 61 and 62 with
-    #   the battery charging and discharging normally, no protection set,
-    #   while the B700 pack's own over-temperature cut-off is 61 C (user
-    #   manual, ch. 11); a thermal camera put the packs at 17 C (61 F = 16 C).
+    # - The pack temperature (51224) is degrees C plus 40, the encoding the
+    #   BLUETTI app decodes for every EP2000 temperature and the one the
+    #   sheet's -40~160 range describes: 51224 reads 59-63 on packs at room
+    #   temperature, the raw range of the app's own pack temperature over
+    #   Bluetooth (bluetti-registers#42). Plain C is ruled out by the B700's
+    #   61 C cut-off (user manual, ch. 11).
     # - PV3 and PV4 (50276-50283) are left out: the EP2000 has two MPPTs
     #   (PV1+PV2 and PV3+PV4 terminals, Quick Guide), reported as PV1 and PV2
     #   (two different voltages, pv_dc_count 2); the next two slots read 0 V
     #   with 132 W and 2300-2600 A on two units.
-    ("m", "EP2000", "b_t_avg"): {"unit": "°F"},
+    ("m", "EP2000", "b_t_avg"): {"unit": "°C", "offset": -40},
     ("m", "EP2000", "g_1_i_p"): {"content": "int"},
     ("m", "EP2000", "g_2_i_p"): {"content": "int"},
     ("m", "EP2000", "g_3_i_p"): {"content": "int"},

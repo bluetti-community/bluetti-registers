@@ -77,7 +77,7 @@ another project (currently Node.js/TypeScript).
   published as a static site via GitHub Pages.
 - `examples/` — short examples showing how to consume a generated JSON file
   from another project.
-- `fields.py` — the shared field catalogue: name, type, unit, scale and
+- `fields.py` — the shared field catalogue: name, type, unit, scale, offset and
   metadata for every field the CSVs can reference.
 - `generate-from-csv.py`, `generate.py`, `validate.py`, `helpers.py` — the
   pipeline: per-device files, the combined per-protocol files, validation, and
