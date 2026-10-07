@@ -298,10 +298,12 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # @BOPOHOP on real hardware: ac_o_switch/dc_o_switch switch the outputs
     # (writeable); b_soc_low/b_soc_high read (30/98) but a write is refused
     # with "illegal data address" - read-only, as on AC200L; g_i_switch
-    # accepts a write and the state follows, but its effect on charging
-    # could not be seen (battery full) - read-only until it has been.
-    # Unconfirmed, carried over from AC500: b_c_total's scale and sign, the
-    # energy totals (0.0 on both units), the PV fields (0, no panels seen).
+    # stops and resumes charging from the grid (writeable).
+    # d_inverter_total (50008) is a single signed register here: +221 W
+    # discharging into a 276 W AC load, -1759 W charging from the grid at
+    # 1768 W - the flow direction b_c_total (a magnitude) does not give.
+    # Unconfirmed, carried over from AC500: the energy totals (0.0 on both
+    # units), the PV fields (0, no panels seen).
     ("m", "EP500P", "ac_o_p_total"): {"content": "uint16", "length": 1},
     ("m", "EP500P", "pv_i_p_total"): {"content": "uint16", "length": 1},
     ("m", "EP500P", "g_i_p_total"): {"content": "int16", "length": 1},
@@ -313,7 +315,7 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "EP500P", "pv_i_p_local"): {"content": "uint16", "length": 1},
     ("m", "EP500P", "pv_i_e_local"): {"content": "uint16", "length": 1},
     ("m", "EP500P", "d_inverter_type"): {"content": "string_swapped"},
-    ("m", "EP500P", "g_i_switch"): {"writeable": False},
+    ("m", "EP500P", "d_inverter_total"): {"content": "int16", "length": 1},
     ("m", "EP500P", "b_soc_low"): {"writeable": False},
     ("m", "EP500P", "b_soc_high"): {"writeable": False},
 
