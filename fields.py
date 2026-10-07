@@ -299,9 +299,11 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # (writeable); b_soc_low/b_soc_high read (30/98) but a write is refused
     # with "illegal data address" - read-only, as on AC200L; g_i_switch
     # stops and resumes charging from the grid (writeable).
-    # d_inverter_total (50008) is a single signed register here: +221 W
-    # discharging into a 276 W AC load, -1759 W charging from the grid at
-    # 1768 W - the flow direction b_c_total (a magnitude) does not give.
+    # d_inverter_total (50008) is a single signed register here: the
+    # inverter's AC-side power - positive while it supplies the AC output
+    # (+221 W into a 276 W load), negative while it charges from the grid
+    # (-1759 W at 1768 W). DC (PV) input does not show in it: +209 W with
+    # 496 W of PV charging the battery and a 275 W AC load.
     # Unconfirmed, carried over from AC500: the energy totals (0.0 on both
     # units), the PV fields (0, no panels seen).
     ("m", "EP500P", "ac_o_p_total"): {"content": "uint16", "length": 1},
