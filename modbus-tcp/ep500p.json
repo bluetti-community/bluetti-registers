@@ -34,6 +34,15 @@
             "length": 1
         },
         {
+            "name": "d_inverter_total",
+            "address": 50008,
+            "content": "int16",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 1
+        },
+        {
             "name": "ac_o_e_total",
             "address": 50012,
             "content": "uint",
@@ -242,7 +251,8 @@
         {
             "name": "g_i_switch",
             "address": 57009,
-            "content": "bool"
+            "content": "bool",
+            "writeable": true
         },
         {
             "name": "b_soc_low",
