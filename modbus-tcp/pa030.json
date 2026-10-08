@@ -432,6 +432,12 @@
             "category": "diagnostic"
         },
         {
+            "name": "d_iot_ver",
+            "address": 53011,
+            "content": "version2",
+            "category": "diagnostic"
+        },
+        {
             "name": "ac_o_switch",
             "address": 57001,
             "content": "bool",

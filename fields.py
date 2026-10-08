@@ -473,6 +473,9 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "PA030", "g_1_i_p"): {"content": "int16", "length": 1},
     ("m", "PA030", "d_inverter_1_p"): {"content": "int16", "length": 1},
     ("m", "PA030", "b_ver_1"): {"content": "version2"},
+    # The IoT version spans 53011-53012 (low word first) and is only served
+    # as one two-register read; 53012 alone is refused. 802614 = 8026.14.
+    ("m", "PA030", "d_iot_ver"): {"content": "version2"},
 }
 
 
