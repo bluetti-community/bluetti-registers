@@ -2,7 +2,8 @@
     "$schema": "https://bluetti-community.github.io/bluetti-registers/device.json",
     "name": "PA030",
     "contributors": [
-        "@sidieje"
+        "@sidieje",
+        "@VerbruggenBart"
     ],
     "fields": [
         {
@@ -26,6 +27,15 @@
         {
             "name": "g_i_p_total",
             "address": 50006,
+            "content": "int16",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 1
+        },
+        {
+            "name": "d_inverter_total",
+            "address": 50008,
             "content": "int16",
             "unit": "W",
             "state_class": "measurement",
@@ -164,6 +174,79 @@
             "length": 1
         },
         {
+            "name": "d_phase_count",
+            "address": 50234,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "g_1_i_p",
+            "address": 50235,
+            "content": "int16",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 1
+        },
+        {
+            "name": "g_1_i_v",
+            "address": 50236,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "g_1_i_c",
+            "address": 50237,
+            "content": "int",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "d_inverter_phase_count",
+            "address": 50254,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "d_inverter_1_status",
+            "address": 50255,
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "inverter_status"
+        },
+        {
+            "name": "d_inverter_1_p",
+            "address": 50256,
+            "content": "int16",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power",
+            "length": 1
+        },
+        {
+            "name": "d_inverter_1_v",
+            "address": 50257,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "d_inverter_1_c",
+            "address": 50258,
+            "content": "uint",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
             "name": "pv_dc_count",
             "address": 50267,
             "content": "uint",
@@ -274,6 +357,79 @@
             "num_max": 100,
             "state_class": "measurement",
             "device_class": "battery"
+        },
+        {
+            "name": "b_soh_total",
+            "address": 51005,
+            "content": "uint",
+            "unit": "%",
+            "num_min": 0,
+            "num_max": 100,
+            "category": "diagnostic",
+            "state_class": "measurement"
+        },
+        {
+            "name": "b_status",
+            "address": 51006,
+            "content": "enum",
+            "options": "pack_charging_status",
+            "category": "diagnostic"
+        },
+        {
+            "name": "b_time_to_full_total",
+            "address": 51007,
+            "content": "uint",
+            "unit": "min",
+            "category": "diagnostic"
+        },
+        {
+            "name": "b_type",
+            "address": 51200,
+            "content": "string",
+            "length": 6,
+            "category": "diagnostic"
+        },
+        {
+            "name": "b_serial",
+            "address": 51206,
+            "content": "serial",
+            "category": "diagnostic",
+            "length": 4
+        },
+        {
+            "name": "b_ver_count",
+            "address": 51210,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "b_ver_1",
+            "address": 51211,
+            "content": "version2",
+            "category": "diagnostic",
+            "length": 2
+        },
+        {
+            "name": "b_soc",
+            "address": 51221,
+            "content": "uint",
+            "unit": "%",
+            "num_min": 0,
+            "num_max": 100,
+            "state_class": "measurement",
+            "device_class": "battery"
+        },
+        {
+            "name": "b_cell_count",
+            "address": 51234,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "b_ntc_count",
+            "address": 51235,
+            "content": "uint",
+            "category": "diagnostic"
         },
         {
             "name": "ac_o_switch",

@@ -461,6 +461,18 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "PA030", "g_i_switch"): {"writeable": False},
     ("m", "PA030", "b_soc_low"): {"writeable": False},
     ("m", "PA030", "b_soc_high"): {"writeable": False},
+    # A unit on the grid with a B500K attached (bluetti-registers#49): the
+    # totals cover the unit and the B500K (18 % against 11 % and 22 % in the
+    # app, weighted by capacity), and the pack block at 51200 is the unit's
+    # own battery - type "AP300", the unit's serial, its BMS version v1073.08
+    # as the app prints it. The pack's voltage and current (51219/51220) read
+    # 0 and are left out, as is 51008, a copy of 51007. The inverter and grid
+    # phase powers are single registers (the next one holds the voltage):
+    # 50008 read -585 W and 50256 -582 W while the grid supplied 585 W.
+    ("m", "PA030", "d_inverter_total"): {"content": "int16", "length": 1},
+    ("m", "PA030", "g_1_i_p"): {"content": "int16", "length": 1},
+    ("m", "PA030", "d_inverter_1_p"): {"content": "int16", "length": 1},
+    ("m", "PA030", "b_ver_1"): {"content": "version2"},
 }
 
 
