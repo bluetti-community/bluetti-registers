@@ -67,7 +67,7 @@
             "name": "ac_a_p",
             "address": 55126,
             "content": "float32",
-            "unit": "kW",
+            "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
         },
@@ -75,7 +75,7 @@
             "name": "ac_b_p",
             "address": 55128,
             "content": "float32",
-            "unit": "kW",
+            "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
         },
@@ -83,7 +83,7 @@
             "name": "ac_c_p",
             "address": 55130,
             "content": "float32",
-            "unit": "kW",
+            "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
         },
@@ -91,42 +91,42 @@
             "name": "ac_a_p_reactive",
             "address": 55132,
             "content": "float32",
-            "unit": "kvar",
+            "unit": "var",
             "state_class": "measurement"
         },
         {
             "name": "ac_b_p_reactive",
             "address": 55134,
             "content": "float32",
-            "unit": "kvar",
+            "unit": "var",
             "state_class": "measurement"
         },
         {
             "name": "ac_c_p_reactive",
             "address": 55136,
             "content": "float32",
-            "unit": "kvar",
+            "unit": "var",
             "state_class": "measurement"
         },
         {
             "name": "ac_a_p_apparent",
             "address": 55138,
             "content": "float32",
-            "unit": "kVA",
+            "unit": "VA",
             "state_class": "measurement"
         },
         {
             "name": "ac_b_p_apparent",
             "address": 55140,
             "content": "float32",
-            "unit": "kVA",
+            "unit": "VA",
             "state_class": "measurement"
         },
         {
             "name": "ac_c_p_apparent",
             "address": 55142,
             "content": "float32",
-            "unit": "kVA",
+            "unit": "VA",
             "state_class": "measurement"
         },
         {
@@ -182,7 +182,7 @@
             "name": "ac_p_total",
             "address": 55158,
             "content": "float32",
-            "unit": "kW",
+            "unit": "W",
             "state_class": "measurement",
             "device_class": "power"
         },
@@ -190,14 +190,14 @@
             "name": "ac_p_reactive_total",
             "address": 55160,
             "content": "float32",
-            "unit": "kvar",
+            "unit": "var",
             "state_class": "measurement"
         },
         {
             "name": "ac_p_apparent_total",
             "address": 55162,
             "content": "float32",
-            "unit": "kVA",
+            "unit": "VA",
             "state_class": "measurement"
         },
         {
