@@ -5,6 +5,10 @@
     "anyOf": [
         {
             "type": "string",
+            "const": "apparent_power"
+        },
+        {
+            "type": "string",
             "const": "battery"
         },
         {

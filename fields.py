@@ -476,6 +476,48 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # The IoT version spans 53011-53012 (low word first) and is only served
     # as one two-register read; 53012 alone is refused. 802614 = 8026.14.
     ("m", "PA030", "d_iot_ver"): {"content": "version2"},
+
+    # AC240 (single phase, one PV input, no feed-in): full 0-65535 single-
+    # register scan of a real unit with the AC500 profile (@masieri,
+    # 2026-10-07..10), IoT 9041.17, ARM 2094.02, DSP 2095.04, BMS 1035.04 as
+    # shown in the app. Only 50002-57026 answer. AC500's encodings apply:
+    # single-register power totals and "(Single)" fields, 2-part versions,
+    # swapped type string - the IoT block (53001-53011) is swapped and
+    # 2-part too (53011 "cbb5 000d" = 9041.17). Differences, measured:
+    # - The grid and AC output powers (50006 = 50215 = 50235, 50217 =
+    #   50245) are apparent power: with a cos(phi) < 1 load they read above
+    #   the real power, so VA. 50008 = 50256 is the inverter's real power,
+    #   signed (negative while charging), and 50009 does not answer.
+    # - Voltages are whole volts: 50236 / 50257 raw 236 / 235 on a 230 V
+    #   grid, not 23.6 V. The pack voltage 51219 is 0.01 V (5290 = 52.9 V,
+    #   next to b_v_total 53.2 V at 0.1).
+    # - g_i_f keeps the generic 0.1 (raw 500). g_i_switch accepts a write
+    #   and grid charging follows; the SOC thresholds refuse one.
+    #   The g_i_switch is writable only if "charging mode" is set to "custom UPS";
+    #   Nowadays you can only set the charging mode by app
+    #   I didn't discover the register that shows the carging mode yet
+    #   further investigation about this on next commit
+    ("m", "AC240", "ac_o_p_total"): {"content": "uint16", "length": 1},
+    ("m", "AC240", "pv_i_p_total"): {"content": "uint16", "length": 1},
+    ("m", "AC240", "g_i_p_total"): {"content": "int16", "length": 1, "unit": "VA", "device_class": "apparent_power"},
+    ("m", "AC240", "d_inverter_total"): {"content": "int16", "length": 1},
+    ("m", "AC240", "d_ver_arm"): {"content": "version2"},
+    ("m", "AC240", "d_ver_dsp"): {"content": "version2"},
+    ("m", "AC240", "d_iot_ver"): {"content": "version2"},
+    ("m", "AC240", "b_ver_1"): {"content": "version2"},
+    ("m", "AC240", "d_inverter_type"): {"content": "string_swapped"},
+    ("m", "AC240", "d_iot_model"): {"content": "string_swapped"},
+    ("m", "AC240", "g_i_p_local"): {"content": "uint16", "length": 1, "unit": "VA", "device_class": "apparent_power"},
+    ("m", "AC240", "ac_o_p_local"): {"content": "uint16", "length": 1, "unit": "VA", "device_class": "apparent_power"},
+    ("m", "AC240", "pv_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC240", "pv_i_e_local"): {"content": "uint16", "length": 1},
+    ("m", "AC240", "g_1_i_p"): {"unit": "VA", "device_class": "apparent_power"},
+    ("m", "AC240", "ac_1_o_p"): {"unit": "VA", "device_class": "apparent_power"},
+    ("m", "AC240", "g_1_i_v"): {"scale": 1},
+    ("m", "AC240", "ac_1_o_v"): {"scale": 1},
+    ("m", "AC240", "b_v"): {"scale": 0.01},
+    ("m", "AC240", "b_soc_low"): {"writeable": False},
+    ("m", "AC240", "b_soc_high"): {"writeable": False},
 }
 
 
