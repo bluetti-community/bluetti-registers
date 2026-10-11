@@ -317,7 +317,7 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "EP500P", "pv_i_p_local"): {"content": "uint16", "length": 1},
     ("m", "EP500P", "pv_i_e_local"): {"content": "uint16", "length": 1},
     ("m", "EP500P", "d_inverter_type"): {"content": "string_swapped"},
-    ("m", "EP500P", "d_inverter_total"): {"content": "int16", "length": 1},
+    ("m", "EP500P", "g_i_switch"): {"writeable": False},
     ("m", "EP500P", "b_soc_low"): {"writeable": False},
     ("m", "EP500P", "b_soc_high"): {"writeable": False},
 
