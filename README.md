@@ -115,6 +115,8 @@ a build or already able to answer.
 | S Meter | - | not recorded | [#13](https://github.com/bluetti-community/bluetti-registers/issues/13) |
 | AC500 | 9041.10 | **9041.17** | [bluetti-official#5](https://github.com/bluetti-official/bluetti-modbus-tcp-slave/issues/5) |
 | AC200L | - | **9041.15** | [#31](https://github.com/bluetti-community/bluetti-registers/issues/31) |
+| AC240 | - | **9041.17** | [#65](https://github.com/bluetti-community/bluetti-registers/issues/65) |
+| AC240P | 9041.10 | none yet | [#67](https://github.com/bluetti-community/bluetti-registers/issues/67) |
 | EP500Pro | - | **9041.17** | [#35](https://github.com/bluetti-community/bluetti-registers/issues/35) |
 | Apex 300 | 8026.13 | **8026.14** | [#49](https://github.com/bluetti-community/bluetti-registers/issues/49) |
 | EP2000 (EBOX) | - | **9052.31**, with VPP enabled in the app | [#42](https://github.com/bluetti-community/bluetti-registers/issues/42) |
