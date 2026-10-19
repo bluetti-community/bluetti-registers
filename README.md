@@ -139,6 +139,9 @@ the same build switches on.
 the virtual power plant option in the BLUETTI app opens port 502, on a build
 whose web page shows no Modbus entry - this is how the documentation of a VPP
 gateway that works with BLUETTI batteries tells owners to enable Modbus TCP.
+Where the app shows no VPP entry, updating the BLUETTI app can bring it: on one
+unit it appeared with app 3.1.5, on the same IoT build, offering a single
+provider. The providers listed differ by region.
 Know what that option is before turning it on: a virtual power plant can let
 an aggregator charge and discharge the battery.
 
