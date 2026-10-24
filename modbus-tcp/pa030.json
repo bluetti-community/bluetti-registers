@@ -207,6 +207,64 @@
             "device_class": "current"
         },
         {
+            "name": "ac_phase_count",
+            "address": 50244,
+            "content": "uint",
+            "category": "diagnostic"
+        },
+        {
+            "name": "ac_1_o_p",
+            "address": 50245,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "ac_1_o_v",
+            "address": 50246,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "ac_1_o_c",
+            "address": 50247,
+            "content": "uint",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "ac_2_o_p",
+            "address": 50248,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
+            "name": "ac_2_o_v",
+            "address": 50249,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "ac_2_o_c",
+            "address": 50250,
+            "content": "uint",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
             "name": "d_inverter_phase_count",
             "address": 50254,
             "content": "uint",
@@ -240,6 +298,31 @@
         {
             "name": "d_inverter_1_c",
             "address": 50258,
+            "content": "uint",
+            "unit": "A",
+            "scale": 0.1,
+            "state_class": "measurement",
+            "device_class": "current"
+        },
+        {
+            "name": "d_inverter_2_status",
+            "address": 50259,
+            "content": "enum",
+            "category": "diagnostic",
+            "options": "inverter_status"
+        },
+        {
+            "name": "d_inverter_2_v",
+            "address": 50261,
+            "content": "uint",
+            "unit": "V",
+            "state_class": "measurement",
+            "device_class": "voltage",
+            "scale": 0.1
+        },
+        {
+            "name": "d_inverter_2_c",
+            "address": 50262,
             "content": "uint",
             "unit": "A",
             "scale": 0.1,
