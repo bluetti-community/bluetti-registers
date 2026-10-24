@@ -469,6 +469,12 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # 0 and are left out, as is 51008, a copy of 51007. The inverter and grid
     # phase powers are single registers (the next one holds the voltage):
     # 50008 read -585 W and 50256 -582 W while the grid supplied 585 W.
+    # A split-phase (120/240 V) unit reports its second leg: with a load on
+    # both, the AC output read 455 W / 122.7 V / 4.4 A on L1 and 122 W /
+    # 120.8 V / 1.2 A on L2 (50244 = 2 phases), summing to the 577 W total,
+    # and the inverter's L2 status, voltage and current (121.2 V, 1.2 A). Its
+    # L2 power read 0 under that load and the grid's L2 (50238-50240) 0 while
+    # L1 drew 997 W, so both stay out.
     ("m", "PA030", "d_inverter_total"): {"content": "int16", "length": 1},
     ("m", "PA030", "g_1_i_p"): {"content": "int16", "length": 1},
     ("m", "PA030", "d_inverter_1_p"): {"content": "int16", "length": 1},
