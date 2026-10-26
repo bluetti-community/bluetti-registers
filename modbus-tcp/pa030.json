@@ -535,8 +535,7 @@
         {
             "name": "g_i_switch",
             "address": 57009,
-            "content": "bool",
-            "writeable": true
+            "content": "bool"
         },
         {
             "name": "b_soc_low",
