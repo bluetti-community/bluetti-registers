@@ -444,8 +444,10 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # Both output switches take a write: on real units 57005 went 1 -> 0 -> 1
     # and 57001 0 -> 1 -> 0, read back each time, confirmed at internal
     # addresses 2012 and 2011 as on the Balco family. The grid charging switch
-    # (57009) accepts a write and reads it back (confirmed at 2207), but grid
-    # charging carries on at 0 below 100 % SoC, so it stays read-only. On the
+    # (57009) takes a write too, confirmed at 2207: it is the app's "Charge
+    # From Grid" setting of the Custom working mode. In Custom, 0 turned the
+    # app's slider off and the grid draw went from 1.7 kW to 0, and 1 brought
+    # both back; in Backup the unit kept charging from the grid at 0. On the
     # AC family the SOC thresholds refuse a write outright.
     # The PV and grid-charging energy totals (50014, 50016) are served, at the
     # Balco 260's addresses: 788.1 and 480.4 kWh on that unit.
@@ -460,7 +462,6 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "PA030", "pv_i_e_local"): {"content": "uint16", "length": 1},
     ("m", "PA030", "d_inverter_type"): {"content": "string_swapped"},
     ("m", "PA030", "b_v_total"): {"scale": 0.01},
-    ("m", "PA030", "g_i_switch"): {"writeable": False},
     ("m", "PA030", "b_soc_low"): {"writeable": False},
     ("m", "PA030", "b_soc_high"): {"writeable": False},
     # A unit on the grid with a B500K attached (bluetti-registers#49): the
