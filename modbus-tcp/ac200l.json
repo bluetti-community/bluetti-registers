@@ -178,21 +178,6 @@
             "scale": 0.1
         },
         {
-            "name": "pv_2_i_type",
-            "address": 50272,
-            "content": "enum",
-            "options": "pv_type",
-            "category": "diagnostic"
-        },
-        {
-            "name": "pv_2_i_p",
-            "address": 50273,
-            "content": "uint",
-            "unit": "W",
-            "state_class": "measurement",
-            "device_class": "power"
-        },
-        {
             "name": "b_v_total",
             "address": 51002,
             "content": "uint",
