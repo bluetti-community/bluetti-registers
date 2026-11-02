@@ -279,6 +279,10 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC200L", "pv_i_e_local"): {"content": "uint16", "length": 1},
     ("m", "AC200L", "d_inverter_type"): {"content": "string_swapped"},
     ("m", "AC200L", "b_v_total"): {"scale": 0.01},
+    # Balco500: the pack temperature (51224) is degrees C plus 40, as on the
+    # EP2000: 65 on one unit at room temperature, 54 on another in an
+    # unheated garage with 8 C outside (#68).
+    ("m", "Balco500", "b_t_avg"): {"unit": "°C", "offset": -40},
     # Balcotrans (the Balco Transfer Hub) reports the connected power
     # station's battery voltage, and reports it the way the AC200L does:
     # raw 5350 is 53.50 V, not 535.0. Caught in Home Assistant on a hub

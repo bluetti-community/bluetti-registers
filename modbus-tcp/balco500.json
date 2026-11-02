@@ -750,7 +750,8 @@
             "content": "int",
             "unit": "\u00b0C",
             "state_class": "measurement",
-            "device_class": "temperature"
+            "device_class": "temperature",
+            "offset": -40
         },
         {
             "name": "b_cell_count",
