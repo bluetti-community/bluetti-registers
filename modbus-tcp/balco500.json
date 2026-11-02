@@ -148,14 +148,8 @@
             "category": "diagnostic"
         },
         {
-            "name": "d_ver_arm",
-            "address": 50210,
-            "content": "version",
-            "category": "diagnostic"
-        },
-        {
             "name": "d_ver_dsp",
-            "address": 50212,
+            "address": 50210,
             "content": "version",
             "category": "diagnostic"
         },
