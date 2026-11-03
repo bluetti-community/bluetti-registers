@@ -2,7 +2,8 @@
     "$schema": "https://bluetti-community.github.io/bluetti-registers/device.json",
     "name": "AC200L",
     "contributors": [
-        "@awrede"
+        "@awrede",
+        "@ssleptsov"
     ],
     "fields": [
         {
@@ -233,6 +234,20 @@
             "unit": "%",
             "num_min": 0,
             "num_max": 100,
+            "category": "config"
+        },
+        {
+            "name": "ac_power_lifting_switch",
+            "address": 57022,
+            "content": "bool",
+            "writeable": true
+        },
+        {
+            "name": "d_charging_mode",
+            "address": 57023,
+            "content": "enum",
+            "options": "charging_mode",
+            "writeable": true,
             "category": "config"
         }
     ]
