@@ -119,7 +119,7 @@ a build or already able to answer.
 | AC240P | 9041.10 | none yet | [#67](https://github.com/bluetti-community/bluetti-registers/issues/67) |
 | EP500Pro | - | **9041.17** | [#35](https://github.com/bluetti-community/bluetti-registers/issues/35) |
 | Apex 300 | 8026.13 | **8026.14** | [#49](https://github.com/bluetti-community/bluetti-registers/issues/49) |
-| EP2000 (EBOX) | - | **9052.31**, with VPP enabled in the app | [#42](https://github.com/bluetti-community/bluetti-registers/issues/42) |
+| EP2000 (EBOX) | - | **9052.30** and **9052.31**, with VPP enabled in the app | [#42](https://github.com/bluetti-community/bluetti-registers/issues/42) |
 | FridgePower | - | **10010.01.12** | [#38](https://github.com/bluetti-community/bluetti-registers/issues/38) |
 | Balco Transfer Hub | - | **30052.01.17** | [#29](https://github.com/bluetti-community/bluetti-registers/issues/29) |
 | AC300 | 9014.12 | none yet | [#47](https://github.com/bluetti-community/bluetti-registers/issues/47) |
