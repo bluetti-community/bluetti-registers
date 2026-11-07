@@ -531,6 +531,9 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC240", "b_v"): {"scale": 0.01},
     ("m", "AC240", "b_soc_low"): {"writeable": False},
     ("m", "AC240", "b_soc_high"): {"writeable": False},
+    # 5-100 in the BLUETTI app.
+    ("m", "EP2000", "b_soc_low"): {"num_min": 5},
+    ("m", "EP2000", "b_soc_high"): {"num_min": 5},
 }
 
 
