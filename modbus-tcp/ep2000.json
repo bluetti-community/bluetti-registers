@@ -3,7 +3,8 @@
     "name": "EP2000",
     "contributors": [
         "@bluetti-official",
-        "@raunchyray"
+        "@raunchyray",
+        "@daniva6"
     ],
     "fields": [
         {
@@ -1176,7 +1177,7 @@
             "address": 57016,
             "content": "uint",
             "unit": "%",
-            "num_min": 0,
+            "num_min": 5,
             "num_max": 100,
             "writeable": true,
             "category": "config"
@@ -1186,7 +1187,7 @@
             "address": 57017,
             "content": "uint",
             "unit": "%",
-            "num_min": 0,
+            "num_min": 5,
             "num_max": 100,
             "writeable": true,
             "category": "config"
