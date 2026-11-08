@@ -706,6 +706,21 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
             field["options"] = "ups_mode"
         case "d_display_mode":
             field["options"] = "display_mode"
+        case "d_working_mode":
+            # The app's working mode: 1 Custom, 2 Self-Consumption, 4 Backup,
+            # 5 Time of Use, each read after a change in the app. A same-value
+            # write is refused (illegal data address), so read-only.
+            field["options"] = "working_mode"
+            field["writeable"] = False
+        case "g_i_c_max":
+            # The app's Max. Grid Charging Current, in whole amps: 10, 7 and
+            # 4 read after the same three settings in the app. A setting,
+            # not a measurement, and not write-tested.
+            field["content"] = "uint"
+            field["unit"] = "A"
+            field.pop("scale", None)
+            field.pop("state_class", None)
+            field["category"] = "config"
         case "d_split_phase_mode":
             field["options"] = "split_phase_mode"
         case "d_led_mode":

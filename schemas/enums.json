@@ -104,6 +104,18 @@
                 "standard",
                 "time_control"
             ]
+        },
+        {
+            "title": "Working Mode",
+            "type": "integer",
+            "enum": [
+                0,
+                "custom",
+                "self_consumption",
+                3,
+                "backup",
+                "time_of_use"
+            ]
         }
     ]
 }
