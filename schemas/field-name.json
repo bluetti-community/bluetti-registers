@@ -853,6 +853,11 @@
             "const": "d_ver_dsp",
             "title": "DSP version"
         },
+{
+            "type": "string",
+            "const": "d_working_mode",
+            "title": "Device working mode"
+        },
         {
             "type": "string",
             "const": "dc_eco_mode",
@@ -977,6 +982,11 @@
             "type": "string",
             "const": "g_3_p_reactive",
             "title": "Grid phase 3 reactive power"
+        },
+{
+            "type": "string",
+            "const": "g_i_c_max",
+            "title": "Grid charging current limit"
         },
         {
             "type": "string",

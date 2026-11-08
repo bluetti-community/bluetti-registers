@@ -41,6 +41,10 @@
         },
         {
             "type": "string",
+            "const": "working_mode"
+        },
+        {
+            "type": "string",
             "const": "inverter_status"
         },
         {

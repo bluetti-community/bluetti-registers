@@ -4,7 +4,8 @@
     "contributors": [
         "@sidieje",
         "@VerbruggenBart",
-        "@vovka357-crypto"
+        "@vovka357-crypto",
+        "@drmarkb"
     ],
     "fields": [
         {
@@ -540,6 +541,14 @@
             "writeable": true
         },
         {
+            "name": "g_i_c_max",
+            "address": 57011,
+            "content": "uint",
+            "unit": "A",
+            "device_class": "current",
+            "category": "config"
+        },
+        {
             "name": "b_soc_low",
             "address": 57016,
             "content": "uint",
@@ -555,6 +564,14 @@
             "unit": "%",
             "num_min": 0,
             "num_max": 100,
+            "category": "config"
+        },
+        {
+            "name": "d_working_mode",
+            "address": 57020,
+            "content": "enum",
+            "options": "working_mode",
+            "writeable": false,
             "category": "config"
         },
         {
