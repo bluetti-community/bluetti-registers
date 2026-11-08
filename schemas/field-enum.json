@@ -9,6 +9,10 @@
         },
         {
             "type": "string",
+            "const": "apex_charging_mode"
+        },
+        {
+            "type": "string",
             "const": "display_mode"
         },
         {

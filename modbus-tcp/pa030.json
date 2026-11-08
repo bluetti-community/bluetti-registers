@@ -3,7 +3,8 @@
     "name": "PA030",
     "contributors": [
         "@sidieje",
-        "@VerbruggenBart"
+        "@VerbruggenBart",
+        "@vovka357-crypto"
     ],
     "fields": [
         {
@@ -554,6 +555,14 @@
             "unit": "%",
             "num_min": 0,
             "num_max": 100,
+            "category": "config"
+        },
+        {
+            "name": "d_charging_mode",
+            "address": 57023,
+            "content": "enum",
+            "options": "apex_charging_mode",
+            "writeable": true,
             "category": "config"
         }
     ]

@@ -469,6 +469,11 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "PA030", "b_v_total"): {"scale": 0.01},
     ("m", "PA030", "b_soc_low"): {"writeable": False},
     ("m", "PA030", "b_soc_high"): {"writeable": False},
+    # d_charging_mode (57023): the app's charging mode - 0 Standard, 1 Silent,
+    # 2 Turbo, as on the AC200PL, plus 4 Custom; each value read after a
+    # change in the app and written back, the app following (#49). The app
+    # sets it only while the unit's physical selector is on Auto.
+    ("m", "PA030", "d_charging_mode"): {"options": "apex_charging_mode"},
     # A unit on the grid with a B500K attached (bluetti-registers#49): the
     # totals cover the unit and the B500K (18 % against 11 % and 22 % in the
     # app, weighted by capacity), and the pack block at 51200 is the unit's

@@ -13,6 +13,17 @@
             ]
         },
         {
+            "title": "Apex Charging Mode",
+            "type": "integer",
+            "enum": [
+                "standard",
+                "silent",
+                "turbo",
+                3,
+                "custom"
+            ]
+        },
+        {
             "title": "Display Mode",
             "type": "integer",
             "enum": [
