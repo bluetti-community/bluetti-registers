@@ -238,8 +238,8 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # app's "Customized UPS" mode, read 30/80 on a real AC500 (#13,
     # 2026-09-20, @ItsMe00007) - below the lower one the unit goes to AC
     # passthrough to keep a reserve, at the upper one it stops charging
-    # from the grid and leaves the rest to PV. Read-only: no write tested
-    # on an AC500, and an AC200L and an EP500Pro refuse writes there.
+    # from the grid and leaves the rest to PV. Read-only: a write is refused
+    # with "illegal data address" (#13), as on an EP500Pro.
     ("m", "AC500", "b_soc_low"): {"writeable": False},
     ("m", "AC500", "b_soc_high"): {"writeable": False},
     # AC200L (profile name = the device's own d_inverter_type string; confirmed
@@ -452,7 +452,8 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # From Grid" setting of the Custom working mode. In Custom, 0 turned the
     # app's slider off and the grid draw went from 1.7 kW to 0, and 1 brought
     # both back; in Backup the unit kept charging from the grid at 0. On the
-    # AC family the SOC thresholds refuse a write outright.
+    # AC family the SOC thresholds refuse a write outright, and so they do
+    # here: "illegal data address" on 57016 and 57017 (#49).
     # The PV and grid-charging energy totals (50014, 50016) are served, at the
     # Balco 260's addresses: 788.1 and 480.4 kWh on that unit.
     ("m", "PA030", "ac_o_p_total"): {"content": "uint16", "length": 1},
