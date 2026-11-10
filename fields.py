@@ -708,8 +708,9 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
             field["options"] = "display_mode"
         case "d_working_mode":
             # The app's working mode: 1 Custom, 2 Self-Consumption, 4 Backup,
-            # 5 Time of Use, each read after a change in the app. A same-value
-            # write is refused (illegal data address), so read-only.
+            # 5 Time of Use, each read after a change in the app (Apex 300;
+            # Custom and Backup on a Balco 500). A same-value write is refused
+            # on the Apex 300 (illegal data address), so read-only.
             field["options"] = "working_mode"
             field["writeable"] = False
         case "g_i_c_max":

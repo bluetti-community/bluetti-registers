@@ -874,6 +874,14 @@
             "num_max": 100,
             "writeable": true,
             "category": "config"
+        },
+        {
+            "name": "d_working_mode",
+            "address": 57020,
+            "content": "enum",
+            "options": "working_mode",
+            "writeable": false,
+            "category": "config"
         }
     ]
 }
