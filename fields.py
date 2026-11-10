@@ -540,6 +540,8 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # 5-100 in the BLUETTI app.
     ("m", "EP2000", "b_soc_low"): {"num_min": 5},
     ("m", "EP2000", "b_soc_high"): {"num_min": 5},
+    ("m", "Balco500", "b_soc_low"): {"num_min": 5},
+    ("m", "Balco500", "b_soc_high"): {"num_min": 5},
 }
 
 
