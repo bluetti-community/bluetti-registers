@@ -122,7 +122,7 @@ a build or already able to answer.
 | EP2000 (EBOX) | - | **9052.30** and **9052.31**, with VPP enabled in the app | [#42](https://github.com/bluetti-community/bluetti-registers/issues/42) |
 | FridgePower | - | **10010.01.12** | [#38](https://github.com/bluetti-community/bluetti-registers/issues/38) |
 | Balco Transfer Hub | - | **30052.01.17** | [#29](https://github.com/bluetti-community/bluetti-registers/issues/29) |
-| AC300 | 9014.12 | none yet | [#47](https://github.com/bluetti-community/bluetti-registers/issues/47) |
+| AC300 | 9014.12, 9041.10 | **9041.17** | [#47](https://github.com/bluetti-community/bluetti-registers/issues/47) |
 
 **Version numbers only compare within a product line.** Each family numbers its
 IoT firmware its own way - `9041.x`, `8026.x`, `9014.x`, `9052.x`,
@@ -145,11 +145,10 @@ provider. The providers listed differ by region.
 Know what that option is before turning it on: a virtual power plant can let
 an aggregator charge and discharge the battery.
 
-**The open question is the AC300.** Two units on 9014.12 have no web page worth
-reaching and are offered no update, while other AC300s have been reported on
-9041.10 and 9041.17 - the line and build that carry the page on the AC500 and
-the EP500Pro. Nobody has checked whether those units serve it. If you have an
-AC300 on a `9041.x` build, that single check settles the model.
+**On the AC300 the app may not offer the update.** Units on 9014.12 report
+"up to date" and serve no page; BLUETTI has offered to register such units for
+the firmware update on request, with the full firmware versions (IoT, ARM, DSP,
+BMS).
 
 To read your own: the BLUETTI app, **My Devices** -> the three dots on the
 device -> **Upgrade**, which lists IoT, ARM, DSP and BMS. Where a local web
