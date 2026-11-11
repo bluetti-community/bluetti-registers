@@ -6,6 +6,8 @@ on:
         paths:
         - 'bluetooth/**'
         - 'modbus-tcp/**'
+        - 'schemas/**'
+        - 'requirements.txt'
         - '*.py'
         - '.github/workflows/**'
         tags:
@@ -15,6 +17,8 @@ on:
         paths:
         - 'bluetooth/**'
         - 'modbus-tcp/**'
+        - 'schemas/**'
+        - 'requirements.txt'
         - '*.py'
         - '.github/workflows/**'
 
@@ -22,9 +26,9 @@ jobs:
     validate:
         runs-on: ubuntu-latest
         steps:
-        -   uses: actions/checkout@v4
+        -   uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         -   name: Set up Python 3.10
-            uses: actions/setup-python@v3
+            uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
             with:
                 python-version: "3.10"
         -   name: Install dependencies
@@ -41,9 +45,9 @@ jobs:
         permissions:
             contents: write
         steps:
-        -   uses: actions/checkout@v4
+        -   uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         -   name: Set up Python 3.10
-            uses: actions/setup-python@v3
+            uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
             with:
                 python-version: "3.10"
         -   name: Install dependencies
@@ -54,17 +58,17 @@ jobs:
         -   name: Run generator
             run: python generate.py
         -   name: Upload bluetooth artifact
-            uses: actions/upload-artifact@v7
+            uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
             with:
                 name: bluetooth.json
                 path: ./out/bluetooth.json
         -   name: Upload modbus-tcp artifact
-            uses: actions/upload-artifact@v7
+            uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
             with:
                 name: modbus-tcp.json
                 path: ./out/modbus-tcp.json
         -   name: Release
-            uses: softprops/action-gh-release@v3
+            uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3.0.4
             if: github.ref_type == 'tag'
             with:
                 files: |
