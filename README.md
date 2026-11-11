@@ -4,7 +4,7 @@ Register maps for BLUETTI power stations, covering both the Bluetooth app
 protocol (`bluetooth/`) and Modbus TCP (`modbus-tcp/`). One JSON file per
 device, plus a combined JSON per protocol attached to every release.
 
-Currently: 27 devices over Bluetooth, 8 over Modbus TCP.
+Currently: 27 devices over Bluetooth, 11 over Modbus TCP.
 
 Wondering whether your unit can answer at all? See [Which firmware serves
 Modbus TCP](#which-firmware-serves-modbus-tcp).
@@ -112,14 +112,14 @@ a build or already able to answer.
 | Device | Seen *without* it | Seen serving it | Evidence |
 |---|---|---|---|
 | Balco 260 / Balco 500 | - | **500120117** | BLUETTI's own [Device list sheet][spec] |
-| S Meter | - | not recorded | [#13](https://github.com/bluetti-community/bluetti-registers/issues/13) |
+| S Meter | - | **300510106** | [bluetti-official#13](https://github.com/bluetti-official/bluetti-modbus-tcp-slave/issues/13) |
 | AC500 | 9041.10 | **9041.17** | [bluetti-official#5](https://github.com/bluetti-official/bluetti-modbus-tcp-slave/issues/5) |
 | AC200L | - | **9041.15** | [#31](https://github.com/bluetti-community/bluetti-registers/issues/31) |
 | AC240 | - | **9041.17** | [#65](https://github.com/bluetti-community/bluetti-registers/issues/65) |
-| AC240P | 9041.10 | none yet | [#67](https://github.com/bluetti-community/bluetti-registers/issues/67) |
+| AC240P | 9041.10 | **9041.17** | [#67](https://github.com/bluetti-community/bluetti-registers/issues/67) |
 | EP500Pro | - | **9041.17** | [#35](https://github.com/bluetti-community/bluetti-registers/issues/35) |
-| Apex 300 | 8026.13 | **8026.14** | [#49](https://github.com/bluetti-community/bluetti-registers/issues/49) |
-| EP2000 (EBOX) | - | **9052.30** and **9052.31**, with VPP enabled in the app | [#42](https://github.com/bluetti-community/bluetti-registers/issues/42) |
+| Apex 300 | 8026.13 | **8026.14** and **8026.17** | [#49](https://github.com/bluetti-community/bluetti-registers/issues/49) |
+| EP2000 (EBOX) | - | **9052.30** and **9052.31**, with VPP enabled in the app | [#42](https://github.com/bluetti-community/bluetti-registers/issues/42), [hassio-bluetti-modbus#145](https://github.com/bluetti-community/hassio-bluetti-modbus/issues/145) |
 | FridgePower | - | **10010.01.12** | [#38](https://github.com/bluetti-community/bluetti-registers/issues/38) |
 | Balco Transfer Hub | - | **30052.01.17** | [#29](https://github.com/bluetti-community/bluetti-registers/issues/29) |
 | AC300 | 9014.12, 9041.10 | **9041.17** | [#47](https://github.com/bluetti-community/bluetti-registers/issues/47) |
@@ -132,8 +132,8 @@ nothing. Compare a unit only against its own row.
 **What "serving it" means differs slightly by model.** On most, the build adds
 a **Modbus TCP** entry to the local web page's Settings, which the owner then
 enables. On the Balco Transfer Hub that entry exists but ships switched off. On
-the Apex 300 the page itself lives on the unit's own Wi-Fi access point, which
-the same build switches on.
+the Apex 300, 8026.14 puts the page on the unit's own Wi-Fi access point, which
+that build switches on; 8026.17 serves it on the home network.
 
 **On an EP2000 the switch is not on the web page at all: it is VPP.** Enabling
 the virtual power plant option in the BLUETTI app opens port 502, on a build
@@ -162,18 +162,19 @@ Fields carry a `contributors` list recording who established them. Sources
 differ in confidence and it's worth knowing which is which:
 
 - BLUETTI's official Cassandra Protocol register table, which covers most of
-  the Balco260/Balco500/EP2000 Modbus map.
+  the Balco260/Balco500/EP2000/S Meter Modbus map.
 - Readings confirmed against real hardware. Where these contradict the official
   table, hardware wins and the commit message says so.
 - Reverse engineering of the Bluetooth app protocol, which is where the
   `bluetooth/` data originates.
 
-Pre-release tags (`ac500-beta-*`, `balco500-beta-*`) exist so owners of a given
-device can test a register map before it lands in a stable release.
+Per-device pre-release tags (`<device>-beta-*`, such as `ac500-beta-*`) exist
+so owners of a given device can test a register map before it lands in a
+stable release.
 
-⚠️ **If you plan to probe registers yourself, read the warning in
-[CONTRIBUTING.md](CONTRIBUTING.md) first.** At least one device has had its
-socket pool exhausted by rapid successive TCP connections on port 502,
-requiring a factory reset. Out-of-range addresses may reset the connection
+⚠️ **If you plan to probe registers yourself, read the warnings in
+[HARDWARE_TESTING.md](https://github.com/bluetti-community/bluetti-modbus/blob/main/HARDWARE_TESTING.md)
+first.** At least one device has had its socket pool exhausted by rapid
+successive TCP connections on port 502, requiring a factory reset. Out-of-range addresses may reset the connection
 instead of returning a Modbus exception. Pace any scanning well below what a
 normal scanner would do.
