@@ -65,7 +65,7 @@ AI) rely on it to know a field's behavior is verified rather than guessed.
 
 Open a pull request against `main`. Keep it focused - one field/device fix per PR is easier to
 verify and revert than a bundle of unrelated changes. CI (`build.yml`) runs `validate.py` on every
-PR that touches the CSVs, the device JSON, a `.py` file or a workflow; a tagged release (which
+PR that touches the CSVs, the device JSON, the schemas, a `.py` file or a workflow; a tagged release (which
 downstream projects like `bluetti-modbus` pin to) is cut by a maintainer once changes on `main`
 are ready to ship.
 
