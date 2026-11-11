@@ -537,7 +537,10 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC240", "b_v"): {"scale": 0.01},
     ("m", "AC240", "b_soc_low"): {"writeable": False},
     ("m", "AC240", "b_soc_high"): {"writeable": False},
-    # 5-100 in the BLUETTI app.
+    # 5-100 in the BLUETTI app (the Balco series' one SoC slider covers both
+    # limits).
+    ("m", "Balco260", "b_soc_low"): {"num_min": 5},
+    ("m", "Balco260", "b_soc_high"): {"num_min": 5},
     ("m", "EP2000", "b_soc_low"): {"num_min": 5},
     ("m", "EP2000", "b_soc_high"): {"num_min": 5},
     ("m", "Balco500", "b_soc_low"): {"num_min": 5},
@@ -672,16 +675,6 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
             field["num_max"] = 100
             field["writeable"] = True
             field["category"] = "config"
-            if device == "Balco260":
-                # 5-90, not 0-100 - confirmed against the official BLUETTI
-                # app's own SOC setting screen for this device, which only
-                # allows the discharge-stop threshold to be set within that
-                # range. No official register spec confirms this, and it
-                # isn't extended to other devices sharing this field name
-                # without equivalent evidence for each - b_soc_high is left
-                # at 0-100 pending its own confirmation, even on Balco260.
-                field["num_min"] = 5
-                field["num_max"] = 90
         case "b_soc_high":
             field["content"] = "uint"
             field["unit"] = "%"
