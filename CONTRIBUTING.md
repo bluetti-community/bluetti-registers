@@ -3,9 +3,10 @@
 This repository is the source of truth for every register definition used across the
 bluetti-community projects (`bluetti-modbus` generates its device classes from here;
 `hassio-bluetti-modbus` vendors that in turn). There is no static per-model datasheet baked in
-anywhere downstream - every field here was confirmed by someone comparing a real device's raw
-Modbus/Bluetooth values against BLUETTI's own documentation and/or the BLUETTI app. A fix here
-propagates to every project that consumes it.
+anywhere downstream - every field here comes from BLUETTI's own documentation, a real device's
+raw values compared against the BLUETTI app, or (for Bluetooth) reverse engineering; the README's
+"Where the data comes from" says which is which. A fix here propagates to every project that
+consumes it.
 
 **Not a developer, or don't know Python?** The hardest part of contributing here is almost never
 writing the JSON/CSV - it's gathering real-device evidence that a field's address, width, sign, or
@@ -64,7 +65,8 @@ AI) rely on it to know a field's behavior is verified rather than guessed.
 
 Open a pull request against `main`. Keep it focused - one field/device fix per PR is easier to
 verify and revert than a bundle of unrelated changes. CI (`build.yml`) runs `validate.py` on every
-PR; a tagged release (which downstream projects like `bluetti-modbus` pin to) is cut by a
-maintainer once changes on `main` are ready to ship.
+PR that touches the CSVs, the device JSON, a `.py` file or a workflow; a tagged release (which
+downstream projects like `bluetti-modbus` pin to) is cut by a maintainer once changes on `main`
+are ready to ship.
 
 [hardware-testing]: https://github.com/bluetti-community/bluetti-modbus/blob/main/HARDWARE_TESTING.md
