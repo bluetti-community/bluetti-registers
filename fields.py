@@ -537,6 +537,33 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC240", "b_v"): {"scale": 0.01},
     ("m", "AC240", "b_soc_low"): {"writeable": False},
     ("m", "AC240", "b_soc_high"): {"writeable": False},
+    # AC300: reads with AC500's register set and encodings on a real unit
+    # (bluetti-community/bluetti-registers#47), 50200 reporting "AC300".
+    # Compared with the BLUETTI app at the same moment: PV and AC output
+    # power, PV yield, SoC, both output switches, the SOC limits, and the
+    # ARM, DSP and IoT versions (53011-53012, 2-part as on AC240).
+    # Left out because they carry nothing here: the per-input PV fields and
+    # counts (0 / Reserve with solar coming in) and ac_o_e_total (0.0 kWh).
+    # Left out as not compared with anything yet: pv_i_p_local, g_o_e_total,
+    # and the IoT model and serial (53001 reads "AC300" again).
+    # Writes: dc_o_switch is accepted and follows in the app; the SOC limits
+    # refuse a write. ac_o_switch and g_i_switch accept one, but the effect
+    # is not confirmed in the app yet, so they stay read-only.
+    ("m", "AC300", "ac_o_p_total"): {"content": "uint16", "length": 1},
+    ("m", "AC300", "pv_i_p_total"): {"content": "uint16", "length": 1},
+    ("m", "AC300", "g_i_p_total"): {"content": "int16", "length": 1},
+    ("m", "AC300", "d_ver_arm"): {"content": "version2"},
+    ("m", "AC300", "d_ver_dsp"): {"content": "version2"},
+    ("m", "AC300", "d_iot_ver"): {"content": "version2"},
+    ("m", "AC300", "g_i_f"): {"scale": 0.01},
+    ("m", "AC300", "g_i_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC300", "ac_o_p_local"): {"content": "uint16", "length": 1},
+    ("m", "AC300", "pv_i_e_local"): {"content": "uint16", "length": 1},
+    ("m", "AC300", "d_inverter_type"): {"content": "string_swapped"},
+    ("m", "AC300", "ac_o_switch"): {"writeable": False},
+    ("m", "AC300", "g_i_switch"): {"writeable": False},
+    ("m", "AC300", "b_soc_low"): {"writeable": False},
+    ("m", "AC300", "b_soc_high"): {"writeable": False},
     # 5-100 in the BLUETTI app (the Balco series' one SoC slider covers both
     # limits).
     ("m", "Balco260", "b_soc_low"): {"num_min": 5},
