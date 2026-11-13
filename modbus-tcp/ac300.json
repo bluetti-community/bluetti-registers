@@ -100,6 +100,14 @@
             "length": 1
         },
         {
+            "name": "pv_1_i_p",
+            "address": 50219,
+            "content": "uint",
+            "unit": "W",
+            "state_class": "measurement",
+            "device_class": "power"
+        },
+        {
             "name": "pv_i_e_local",
             "address": 50229,
             "content": "uint16",
