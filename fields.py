@@ -572,6 +572,9 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "EP2000", "b_soc_high"): {"num_min": 5},
     ("m", "Balco500", "b_soc_low"): {"num_min": 5},
     ("m", "Balco500", "b_soc_high"): {"num_min": 5},
+    # d_working_mode (57020) takes a write on a Balco 500: Custom and Backup
+    # each written and read back on a real unit, the app following.
+    ("m", "Balco500", "d_working_mode"): {"writeable": True},
 }
 
 
@@ -731,8 +734,9 @@ def create_special_fields(n: str, field: dict[str, Any], com: str, device: str):
         case "d_working_mode":
             # The app's working mode: 1 Custom, 2 Self-Consumption, 4 Backup,
             # 5 Time of Use, each read after a change in the app (Apex 300;
-            # Custom and Backup on a Balco 500). A same-value write is refused
-            # on the Apex 300 (illegal data address), so read-only.
+            # Custom, Self-Consumption and Backup on a Balco 500). A same-value
+            # write is refused on the Apex 300 (illegal data address), so
+            # read-only there; the Balco 500 takes the write (its override).
             field["options"] = "working_mode"
             field["writeable"] = False
         case "g_i_c_max":
