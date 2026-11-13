@@ -549,9 +549,11 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # carries the second input.
     # Left out as not compared with anything yet: g_o_e_total, and the IoT
     # model and serial (53001 reads "AC300" again).
-    # Writes: dc_o_switch is accepted and follows in the app; the SOC limits
-    # refuse a write. ac_o_switch and g_i_switch accept one, but the effect
-    # is not confirmed in the app yet, so they stay read-only.
+    # Writes: ac_o_switch and dc_o_switch are accepted and the outputs
+    # follow, the AC output seen going off and back on at the device; the
+    # SOC limits refuse a write.
+    # g_i_switch (57009) is left out: it reads 1 with Grid Charge off as
+    # with it on, and a write to it changes nothing in the app.
     ("m", "AC300", "ac_o_p_total"): {"content": "uint16", "length": 1},
     ("m", "AC300", "pv_i_p_total"): {"content": "uint16", "length": 1},
     ("m", "AC300", "g_i_p_total"): {"content": "int16", "length": 1},
@@ -563,8 +565,6 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "AC300", "ac_o_p_local"): {"content": "uint16", "length": 1},
     ("m", "AC300", "pv_i_e_local"): {"content": "uint16", "length": 1},
     ("m", "AC300", "d_inverter_type"): {"content": "string_swapped"},
-    ("m", "AC300", "ac_o_switch"): {"writeable": False},
-    ("m", "AC300", "g_i_switch"): {"writeable": False},
     ("m", "AC300", "b_soc_low"): {"writeable": False},
     ("m", "AC300", "b_soc_high"): {"writeable": False},
     # 5-100 in the BLUETTI app (the Balco series' one SoC slider covers both
