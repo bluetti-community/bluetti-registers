@@ -544,8 +544,11 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # ARM, DSP and IoT versions (53011-53012, 2-part as on AC240).
     # Left out because they carry nothing here: the per-input PV fields and
     # counts (0 / Reserve with solar coming in) and ac_o_e_total (0.0 kWh).
-    # Left out as not compared with anything yet: pv_i_p_local, g_o_e_total,
-    # and the IoT model and serial (53001 reads "AC300" again).
+    # pv_1_i_p is at 50219 here, AC500's pv_i_p_local: it reads the app's
+    # DC Input Power 1, also checked on the device display. Nothing found
+    # carries the second input.
+    # Left out as not compared with anything yet: g_o_e_total, and the IoT
+    # model and serial (53001 reads "AC300" again).
     # Writes: dc_o_switch is accepted and follows in the app; the SOC limits
     # refuse a write. ac_o_switch and g_i_switch accept one, but the effect
     # is not confirmed in the app yet, so they stay read-only.
