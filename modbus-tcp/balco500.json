@@ -879,7 +879,7 @@
             "name": "d_working_mode",
             "address": 57020,
             "content": "enum",
-            "options": "working_mode",
+            "options": "balco_working_mode",
             "writeable": true,
             "category": "config"
         }

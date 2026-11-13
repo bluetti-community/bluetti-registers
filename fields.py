@@ -573,8 +573,13 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     ("m", "Balco500", "b_soc_low"): {"num_min": 5},
     ("m", "Balco500", "b_soc_high"): {"num_min": 5},
     # d_working_mode (57020) takes a write on a Balco 500: Custom and Backup
-    # each written and read back on a real unit, the app following.
-    ("m", "Balco500", "d_working_mode"): {"writeable": True},
+    # each written and read back on a real unit, the app following. The
+    # BLUETTI app offers a Balco three modes - 1 Custom, 2 Self-Consumption,
+    # 4 Backup, each read on a real unit - and no Time of Use.
+    ("m", "Balco500", "d_working_mode"): {
+        "writeable": True,
+        "options": "balco_working_mode",
+    },
 }
 
 

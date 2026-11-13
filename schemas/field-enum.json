@@ -45,6 +45,10 @@
         },
         {
             "type": "string",
+            "const": "balco_working_mode"
+        },
+        {
+            "type": "string",
             "const": "inverter_status"
         },
         {
