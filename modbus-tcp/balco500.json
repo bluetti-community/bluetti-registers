@@ -880,7 +880,7 @@
             "address": 57020,
             "content": "enum",
             "options": "working_mode",
-            "writeable": false,
+            "writeable": true,
             "category": "config"
         }
     ]
