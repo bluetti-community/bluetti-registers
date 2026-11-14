@@ -2,7 +2,8 @@
     "$schema": "https://bluetti-community.github.io/bluetti-registers/device.json",
     "name": "Balco260",
     "contributors": [
-        "@Patrick762"
+        "@Patrick762",
+        "@chpego"
     ],
     "fields": [
         {
@@ -863,6 +864,14 @@
             "unit": "%",
             "num_min": 5,
             "num_max": 100,
+            "writeable": true,
+            "category": "config"
+        },
+        {
+            "name": "d_working_mode",
+            "address": 57020,
+            "content": "enum",
+            "options": "balco_working_mode",
             "writeable": true,
             "category": "config"
         }
