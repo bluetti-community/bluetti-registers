@@ -111,8 +111,8 @@ a build or already able to answer.
 
 | Device | Seen *without* it | Seen serving it | Evidence |
 |---|---|---|---|
-| Balco 260 / Balco 500 | - | **500120117** | BLUETTI's own [Device list sheet][spec] |
-| S Meter | - | **300510106** | [bluetti-official#13](https://github.com/bluetti-official/bluetti-modbus-tcp-slave/issues/13) |
+| Balco 260 / Balco 500 | - | **50012.01.17** | BLUETTI's own [Device list sheet][spec] |
+| S Meter | - | **30051.01.06** | [bluetti-official#13](https://github.com/bluetti-official/bluetti-modbus-tcp-slave/issues/13) |
 | AC500 | 9041.10 | **9041.17** | [bluetti-official#5](https://github.com/bluetti-official/bluetti-modbus-tcp-slave/issues/5) |
 | AC200L | - | **9041.15** | [#31](https://github.com/bluetti-community/bluetti-registers/issues/31) |
 | AC240 | - | **9041.17** | [#65](https://github.com/bluetti-community/bluetti-registers/issues/65) |
@@ -126,8 +126,8 @@ a build or already able to answer.
 
 **Version numbers only compare within a product line.** Each family numbers its
 IoT firmware its own way - `9041.x`, `8026.x`, `9014.x`, `9052.x`,
-`10010.01.x`, `30052.01.17` - so a higher number on another model means
-nothing. Compare a unit only against its own row.
+`10010.01.x`, `30052.01.x`, `30051.01.x`, `50012.01.x` - so a higher number
+on another model means nothing. Compare a unit only against its own row.
 
 **What "serving it" means differs slightly by model.** On most, the build adds
 a **Modbus TCP** entry to the local web page's Settings, which the owner then
