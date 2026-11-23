@@ -592,6 +592,16 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
         "writeable": True,
         "options": "balco_working_mode",
     },
+    # The FridgePower's 57020 is the app's UPS mode: 1 Customized UPS, 2 PV
+    # Priority UPS, 4 Standard UPS, 5 Time Control UPS, each read after the
+    # change in the app. A same-value write is refused (illegal data
+    # address), so read-only. Power lifting (57022) and AC ECO (57024) each
+    # take a write, confirmed at the internal addresses 2021 and 2017, the
+    # app following (#38).
+    ("m", "FP", "d_working_mode"): {
+        "writeable": False,
+        "options": "ups_working_mode",
+    },
 }
 
 
