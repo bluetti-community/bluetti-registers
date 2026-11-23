@@ -348,6 +348,11 @@ DEVICE_FIELD_OVERRIDES: dict[tuple[str, str, str], dict[str, Any]] = {
     # 2207); the SOC thresholds refuse one ("illegal data address"), so
     # they stay read-only; the AC output switch (57001, powering the
     # fridge) and the grid feed-in switch (57010) have not been tried.
+    # d_charging_mode (57023) is the app's AC charging mode: 0 Standard,
+    # 1 Silent, 2 Turbo, each read after the change in the app (a scan of
+    # 57000-57299, only 57023 following the app); a write is confirmed at
+    # the internal address 2020, as on the Apex 300, the app following and
+    # the setting holding (#38).
     ("m", "FP", "b_v"): {"scale": 0.01},
     ("m", "FP", "b_v_total"): {"scale": 0.01},
     ("m", "FP", "g_1_i_p"): {"content": "int"},

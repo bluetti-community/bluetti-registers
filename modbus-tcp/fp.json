@@ -4,7 +4,8 @@
     "contributors": [
         "@MadPB",
         "@m4skime",
-        "@jumperalex"
+        "@jumperalex",
+        "@jbeardon"
     ],
     "fields": [
         {
@@ -981,6 +982,14 @@
             "unit": "%",
             "num_min": 0,
             "num_max": 100,
+            "category": "config"
+        },
+        {
+            "name": "d_charging_mode",
+            "address": 57023,
+            "content": "enum",
+            "options": "charging_mode",
+            "writeable": true,
             "category": "config"
         }
     ]
